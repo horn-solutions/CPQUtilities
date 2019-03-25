@@ -15,8 +15,9 @@ namespace ConsoleTester
             bool result = Push.Product("product1");
 
 
-
+            
             Console.WriteLine(string.Format("Product1 push response: {0}", result));
+            //comment there are spiders here
             Console.ReadLine();
         }
     }
