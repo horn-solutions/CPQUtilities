@@ -9,5 +9,6 @@ namespace CPQUtilities
     public static class Get
     {
         //comment
+        //commit 2
     }
 }
