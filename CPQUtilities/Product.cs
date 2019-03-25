@@ -75,24 +75,24 @@ namespace CPQUtilities
 
             //generate xml structure based on fields that are filled in
                           // XmlDocument xDoc = new XmlDocument();
-                            retVal.LoadXml(string.Format(@"
-            <Products>
-                <Product>
-                    <Identificator>{0}</Identificator>
-                    <DisplayType>{1}</DisplayType>
-                    <PartNumber>{2}</PartNumber>
-                    <ProductType>{3}</ProductType>
-                    <ProductName>
-                        <USEnglish><![CDATA[{4}]]></USEnglish>
-                    </ProductName>
-                    <StartDate>{5}</StartDate>
-                    <EndDate>{6}</EndDate>
-                    <Categories>
-                        <USEnglish><![CDATA[{7}]]></USEnglish>
-                    </Categories>
-                </Product>
-            </Products>
-            ", ProductId, Identifier, DisplayType, PartNumber, ProductType, ProductName, StartDate, EndDate, Categories));
+            //                retVal.LoadXml(string.Format(@"
+            //<Products>
+            //    <Product>
+            //        <Identificator>{0}</Identificator>
+            //        <DisplayType>{1}</DisplayType>
+            //        <PartNumber>{2}</PartNumber>
+            //        <ProductType>{3}</ProductType>
+            //        <ProductName>
+            //            <USEnglish><![CDATA[{4}]]></USEnglish>
+            //        </ProductName>
+            //        <StartDate>{5}</StartDate>
+            //        <EndDate>{6}</EndDate>
+            //        <Categories>
+            //            <USEnglish><![CDATA[{7}]]></USEnglish>
+            //        </Categories>
+            //    </Product>
+            //</Products>
+            //", ProductId, Identifier, DisplayType, PartNumber, ProductType, ProductName, StartDate, EndDate, Categories));
 
             return retVal;
         }
