@@ -9,46 +9,44 @@ namespace CPQUtilities
 {
     public class Translations : Hashtable
     {
+        public Translations() { }
         public Translations(string EnglishLabel)
         {
             this.Add("USEnglish", EnglishLabel);
         }
+
+        internal string ToXML()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string key in Keys)
+                sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
+            return sb.ToString();
+        }
     }
 
-    public class CategoryList : ICollection<Translations>
+    public class CategoryList : List<Translations>
     {
-        public int Count => throw new NotImplementedException();
-
-        public bool IsReadOnly => throw new NotImplementedException();
-
-        public void Add(Translations item) { this.Add(item); }
-
-        public void Clear() { this.Clear(); }
-
-        public bool Contains(Translations item)
+        internal string ToXML()
         {
-            throw new NotImplementedException();
+            Translations temp = new Translations();
 
-        }
+            foreach (Translations t in this)
+            {
+                foreach (string key in t.Keys)
+                {
+                    if (temp.ContainsKey(key))
+                        temp[key] += t[key] + ";";
+                    else
+                        temp.Add(key, t[key] + ";");
+                }
+            }
 
-        public void CopyTo(Translations[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IEnumerator<Translations> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+            StringBuilder sb = new StringBuilder();
+            foreach (string key in temp.Keys)
+                sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
 
-        public bool Remove(Translations item)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
+            return sb.ToString();
         }
     }
 }

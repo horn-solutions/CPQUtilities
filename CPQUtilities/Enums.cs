@@ -16,4 +16,21 @@ namespace CPQUtilities
         GETLANGUAGES
 
     }
+
+    public enum ProductDisplayType
+    {
+        Simple,
+        Configurable,
+        System,
+        Collection,
+        Parent_child
+    }
+
+    public enum ProductIdentificator
+    {
+        PartNumber,
+        ProductName,
+        ExternalId,
+        CPQProductID
+    }
 }
