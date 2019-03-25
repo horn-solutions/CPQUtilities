@@ -10,7 +10,11 @@ namespace CPQUtilities
     {
         public static bool Product(string name)
         {
-            return false;
+            bool retVal = false;
+
+
+
+            return retVal;
         }
     }
 }

@@ -11,12 +11,9 @@ namespace ConsoleTester
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Adding Product1");
-            bool result = Push.Product("product1");
+            Credentials c = new Credentials();
+            c.DoYouSeeMe();
 
-
-
-            Console.WriteLine(string.Format("Product1 push response: {0}", result));
             Console.ReadLine();
         }
     }
