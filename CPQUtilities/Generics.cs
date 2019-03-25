@@ -22,7 +22,9 @@ namespace CPQUtilities
         public bool IsReadOnly => throw new NotImplementedException();
 
         public void Add(Translations item) { this.Add(item); }
+
         public void Clear() { this.Clear(); }
+
         public bool Contains(Translations item)
         {
             throw new NotImplementedException();

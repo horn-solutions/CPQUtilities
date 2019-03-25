@@ -15,7 +15,10 @@ namespace ConsoleTester
             c.DoYouSeeMe();
             //Push.AddProduct(c.Username, c.Password, "TestProductName");
             
-            Console.ReadLine();
+
+            
+
+            //Console.ReadLine();
 
 
 
@@ -30,7 +33,12 @@ namespace ConsoleTester
             };
 
             Console.WriteLine(Push.Product(p1, c).ProductId);
+
+            Push.Product(p1, c);
+
             Console.ReadLine();
+
+
         }
     }
 }
