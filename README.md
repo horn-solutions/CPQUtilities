@@ -1,4 +1,3 @@
 # CPQUtilities
 Utilities for working with the product formally known as Callidus CPQ
-
-test
+This product was purchased by SAP
