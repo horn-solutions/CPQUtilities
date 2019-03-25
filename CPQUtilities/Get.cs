@@ -8,5 +8,6 @@ namespace CPQUtilities
 {
     public static class Get
     {
+        //comment
     }
 }
