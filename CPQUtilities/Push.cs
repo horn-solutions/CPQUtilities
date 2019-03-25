@@ -56,24 +56,24 @@ namespace CPQUtilities
 
         }
 
-        public static void AddUser(string APIusername, string APIpassword, string endUserName, string endUserPassword, string endUserType, string endUserCompanyCode)
-        {
-            //adds a user to the database
-            //variable definitons:
-            //API* are variables for dev use; ie, APIusername = Andy's dev login, etc. 
-            //endUser* refers to end user variables
-            //note: per API:
-            //endUserCompanyCode = Code of the Company User Belongs to (usually is the SAP number) Company must exist (be pre-configured by SAP CPQ administrator)
-            //endUserType = Group User Belongs To (must be pre-configured by SAP CPQ Administrator)
+        //public static void adduser(string apiusername, string apipassword, string endusername, string enduserpassword, string endusertype, string endusercompanycode)
+        //{
+        //    adds a user to the database
+        //    variable definitons:
+        //    api* are variables for dev use; ie, apiusername = andy's dev login, etc. 
+        //    enduser * refers to end user variables
+        //    note: per api:
+        //    endusercompanycode = code of the company user belongs to(usually is the sap number) company must exist(be pre - configured by sap cpq administrator)
+        //    endusertype = group user belongs to(must be pre - configured by sap cpq administrator)
 
-            WsSrv.WsSrv service = new WsSrv.WsSrv();
-            //wait 200 seconds:
-            service.Timeout = 200 * 1000;
+        //    wssrv.wssrv service = new wssrv.wssrv();
+        //    wait 200 seconds:
+        //    service.timeout = 200 * 1000;
 
-            XmlDocument xDoc = new XmlDocument();
-            //     xDoc.LoadXml(string.Format(@"
-            //<USERPROPERTIES> <USERNAME>{0}
-            //"));
-        }
+        //    xmldocument xdoc = new xmldocument();
+        //    xdoc.loadxml(string.format(@"
+        //    <userproperties> <username>{0}
+        //    "));
+        //}
     }
 }
