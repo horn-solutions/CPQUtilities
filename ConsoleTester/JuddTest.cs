@@ -15,8 +15,7 @@ namespace ConsoleTester
             Console.Write(string.Format("Logging in as {0}", c.Login));
             Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
 
-
-
+            
             Console.ReadLine();
 
         }
