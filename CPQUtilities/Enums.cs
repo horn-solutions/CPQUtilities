@@ -13,7 +13,7 @@ namespace CPQUtilities
         UPDATE,
         ADDORUPDATE,
         DELETE,
-
+        GETLANGUAGES
 
     }
 }

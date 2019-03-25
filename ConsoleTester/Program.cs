@@ -1,4 +1,5 @@
 ﻿using CPQUtilities;
+using Microsoft.Extensions.CommandLineUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,33 +12,30 @@ namespace ConsoleTester
     {
         static void Main(string[] args)
         {
-            Credentials c = new Credentials();
-            c.DoYouSeeMe();
-            //Push.AddProduct(c.Username, c.Password, "TestProductName");
-            
 
-            
+            var app = new CommandLineApplication();
+            var debugTarget = app.Option("-dt | --debugtarget", "Either judd or andy", CommandOptionType.SingleValue);
 
-            //Console.ReadLine();
+            app.OnExecute(() =>
+                {
+                    if (!debugTarget.HasValue())
+                    {
+                        Console.WriteLine("You must specify the debug target using -dt judd or -dt andy");
+                        return 0;
+                    }
 
+                    switch (debugTarget.Value())
+                    {
+                        case "judd": JuddTest.test(args); break;
+                        case "andy": AndyTest.test(args); break;
+                        default:
+                            break;
+                    }
+                    return 1;
+                }
+            );
 
-
-
-            CategoryList cl = new CategoryList();
-            cl.Add(new Translations("Category 1"));
-            Product p1 = new Product()
-            {
-                ProductName = new Translations("Test Product"),
-                ProductType = "Stuff",
-                Categories = cl
-            };
-
-            Console.WriteLine(Push.Product(p1, c).ProductId);
-
-            Push.Product(p1, c);
-
-            Console.ReadLine();
-
+            app.Execute(args);
 
         }
     }

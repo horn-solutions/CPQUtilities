@@ -50,7 +50,7 @@ namespace CPQUtilities
         public string EmailAddress { get; set; }          // 
         public string Address1 { get; set; }              // 
         public string Address2 { get; set; }              // 
-        public bool Administrator { get; set; }         // 
+        public bool Administrator { get; set; }           // 
         public string City { get; set; }                  // 
         public string State { get; set; }                 // 
         public string ZipCode { get; set; }               // 
@@ -58,8 +58,8 @@ namespace CPQUtilities
         public string PhoneNumber { get; set; }           // 
         public string FaxNumber { get; set; }             // 
         public string CompanyCode { get; set; }           // 
-        public int MustChangePassword { get; set; }      // 
-        public int PasswordLocked { get; set; }        // 
+        public int MustChangePassword { get; set; }       // 
+        public int PasswordLocked { get; set; }           // 
         public string DefaultDictionary { get; set; }     // 
         public string OrderingParent { get; set; }        // 
         public string ManagingParent { get; set; }        // 

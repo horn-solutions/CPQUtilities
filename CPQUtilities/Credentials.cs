@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CPQUtilities
 {
@@ -15,18 +16,35 @@ namespace CPQUtilities
 
         public string Login { get { return string.Format("{0}#{1}", Username, Domain); } }
 
-        public void DoYouSeeMe()
+        public bool DoYouSeeMe()
         {
+            bool retVal = false;
+
             WsSrv.WsSrv service = new WsSrv.WsSrv();
             //service.Url = urlList.SelectedItem.ToString();
             service.Timeout = 200 * 1000; //miliseconds
 
             string response = service.doUSeeMe(Login, Password);
-            Console.WriteLine("Check Login: " + response);
+            XmlDocument xdoc = new XmlDocument();
+            xdoc.LoadXml(response);
+            retVal = xdoc.FirstChild.Name.Equals("ICANSEEYOU");
+
+
+            return retVal;
         }
 
         public Credentials()
         {
+            if (!File.Exists("Credentials.dat"))
+            {
+                StreamWriter sw= File.CreateText("Credentials.dat");
+                sw.WriteLine("username");
+                sw.WriteLine("password");
+                sw.WriteLine("domain");
+                sw.Flush();
+                sw.Close();
+                throw new Exception("Default credential file created");
+            }
             StreamReader sr = File.OpenText("Credentials.dat");
             string fileContents = sr.ReadToEnd();
             string[] lines = fileContents.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
