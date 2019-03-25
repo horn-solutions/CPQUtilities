@@ -19,10 +19,10 @@ namespace CPQUtilities
             //complete list of WsSrv operations: https://www.webcomcpq.com/wsAPI/wssrv.asmx
 
 
-          
-                WsSrv.WsSrv service = new WsSrv.WsSrv();
-                //wait 200 seconds:
-                service.Timeout = 200 * 1000;
+
+            WsSrv.WsSrv service = new WsSrv.WsSrv();
+            //wait 200 seconds:
+            service.Timeout = 200 * 1000;
 
             //                XmlDocument xDoc = new XmlDocument();
             //                xDoc.LoadXml(string.Format(@"
@@ -45,18 +45,18 @@ namespace CPQUtilities
             //", productName));
 
             XmlDocument xDoc = product.CreateXml();
-            
-            
-                //XmlNode response = service.SimpleProductAdministration(APIusername, APIpassword, "ADDORUPDATE", xDoc);
 
 
-         
+            XmlNode response = service.SimpleProductAdministration(credentials.Username, credentials.Password, "ADDORUPDATE", xDoc);
+
+
+
             return retVal;
 
 
         }
 
-        public static void AddUser(string APIusername, string APIpassword, string endUserName, string endUserPassword, string endUserType, string endUserCompanyCode )
+        public static void AddUser(string APIusername, string APIpassword, string endUserName, string endUserPassword, string endUserType, string endUserCompanyCode)
         {
             //adds a user to the database
             //variable definitons:
@@ -71,9 +71,9 @@ namespace CPQUtilities
             service.Timeout = 200 * 1000;
 
             XmlDocument xDoc = new XmlDocument();
-       //     xDoc.LoadXml(string.Format(@"
-//<USERPROPERTIES> <USERNAME>{0}
-//"));
+            //     xDoc.LoadXml(string.Format(@"
+            //<USERPROPERTIES> <USERNAME>{0}
+            //"));
         }
     }
 }
