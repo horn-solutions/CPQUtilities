@@ -3,12 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CPQUtilities
 {
     public static class Get
     {
-        //comment
-        //commit 2
+
+        public static Product GetProductByUSEnglishName(string name, Credentials credentials)
+        {
+            Product retVal = null;
+
+            //do stuff with server to get XML copy of product
+            XmlDocument xdoc = new XmlDocument();
+
+
+
+            retVal = Product.LoadFromXML(xdoc);
+            return retVal;
+        }
+
+        public static Product GetProductByProductId(int productId, Credentials credentials)
+        {
+            Product retVal = null;
+
+
+
+            return retVal;
+        }
     }
 }

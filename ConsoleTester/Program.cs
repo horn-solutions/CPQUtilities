@@ -13,7 +13,23 @@ namespace ConsoleTester
         {
             Credentials c = new Credentials();
             c.DoYouSeeMe();
+            //Push.AddProduct(c.Username, c.Password, "TestProductName");
+            
+            Console.ReadLine();
 
+
+
+
+            CategoryList cl = new CategoryList();
+            cl.Add(new Translations("Category 1"));
+            Product p1 = new Product()
+            {
+                ProductName = new Translations("Test Product"),
+                ProductType = "Stuff",
+                Categories = cl
+            };
+
+            Console.WriteLine(Push.Product(p1, c).ProductId);
             Console.ReadLine();
         }
     }
