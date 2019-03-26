@@ -77,40 +77,48 @@ namespace CPQUtilities
 
         public XmlDocument CreateXml()
         {
-            XmlDocument retVal = null;
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<USERPROPERTIES>");
-            sb.AppendLine(string.Format("  <USERNAME>{0}</USERNAME>", Username));
-            sb.AppendLine(string.Format("  <PASSWORD AllowSameAsExisting='1'>{0}</PASSWORD>", Password));
-            sb.AppendLine(string.Format("  <TITLE></TITLE>", Title));
-            sb.AppendLine(string.Format("  <FIRSTNAME>{0}</FIRSTNAME>", FirstName));
-            sb.AppendLine(string.Format("  <LASTNAME>{0}</LASTNAME>", LastName));
-            sb.AppendLine(string.Format("  <TYPE>{0}</TYPE>", Type));
-            sb.AppendLine(string.Format("  <EMAILADDRESS>{0}</EMAILADDRESS>", EmailAddress));
-            sb.AppendLine(string.Format("  <ADDRESS1>{0}</ADDRESS1>", Address1));
-            sb.AppendLine(string.Format("  <ADDRESS2>{0}</ADDRESS2>", Address2));
-            sb.AppendLine(string.Format("  <ADMINISTRATOR>{0}</ADMINISTRATOR>", Administrator.ToString().ToUpper()));
-            sb.AppendLine(string.Format("  <CITY>{0}</CITY>", City));
-            sb.AppendLine(string.Format("  <STATE>{0}</STATE>", State));
-            sb.AppendLine(string.Format("  <ZIPCODE>{0}</ZIPCODE>", ZipCode));
-            sb.AppendLine(string.Format("  <COUNTRY>{0}</COUNTRY>", Country));
-            sb.AppendLine(string.Format("  <PHONENUMBER>{0}</PHONENUMBER>", PhoneNumber));
-            sb.AppendLine(string.Format("  <FAXNUMBER>{0}</FAXNUMBER>", FaxNumber));
-            sb.AppendLine(string.Format("  <COMPANYCODE>{0}</COMPANYCODE>", CompanyCode));
-            sb.AppendLine(string.Format("  <MUSTCHANGEPASSWORD>{0}</MUSTCHANGEPASSWORD>", MustChangePassword));
-            sb.AppendLine(string.Format("  <PASSWORDLOCKED>{0}</PASSWORDLOCKED>", PasswordLocked));
-            sb.AppendLine(string.Format("  <DEFAULTDICTIONARY>{0}</DEFAULTDICTIONARY>", DefaultDictionary));
-            sb.AppendLine(string.Format("  <ORDERINGPARENT>{0}</ORDERINGPARENT>", OrderingParent));
-            sb.AppendLine(string.Format("  <MANAGINGPARENT>{0}</MANAGINGPARENT>", ManagingParent));
-            sb.AppendLine(string.Format("  <APPROVINGPARENT>{0}</APPROVINGPARENT>", ApprovingParent));
-            sb.AppendLine(string.Format("  <CrmUserId>{0}</CrmUserId>", CrmUserId));
-            sb.AppendLine(string.Format("  <CrmName>{0}</CrmName>", CrmName));
-            sb.AppendLine(string.Format("  <CrmUserName>{0}</CrmUserName>", CrmUserName));
-            sb.AppendLine(string.Format("  <CrmPassword>{0}</CrmPassword>", CrmPassword));
-            sb.AppendLine("</USERPROPERTIES>");
+            XmlDocument retVal = new XmlDocument();
 
-            retVal = new XmlDocument();
-            retVal.LoadXml(sb.ToString());
+            XmlNode userProperties = retVal.CreateElement("USERPROPERTIES");
+            retVal.AppendChild(userProperties);
+
+
+            Utility.AddIfNotEmptyOrNull(userProperties, "USERNAME", Username);
+
+            XmlNode pw = Utility.AddIfNotEmptyOrNull(userProperties, "PASSWORD", Password);
+            if (pw != null)
+            {
+                XmlAttribute asae = retVal.CreateAttribute("AllowSameAsExisting");
+                asae.InnerText = "1";
+                pw.Attributes.Append(asae);
+            }
+
+            Utility.AddIfNotEmptyOrNull(userProperties, "TITLE", Title);
+            Utility.AddIfNotEmptyOrNull(userProperties, "FIRSTNAME", FirstName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "LASTNAME", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "TYPE", Type);
+            Utility.AddIfNotEmptyOrNull(userProperties, "EMAILADDRESS", EmailAddress);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ADDRESS1", Address1);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ADDRESS2", Address2);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ADMINISTRATOR", Administrator);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CITY", City);
+            Utility.AddIfNotEmptyOrNull(userProperties, "STATE", State);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ZIPCODE", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "COUNTRY", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "PHONENUMBER", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "FAXNUMBER", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "COMPANYCODE", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "MUSTCHANGEPASSWORD", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "PASSWORDLOCKED", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "DEFAULTDICTIONARY", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ORDERINGPARENT", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "MANAGINGPARENT", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "APPROVINGPARENT", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserId", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmName", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserName", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmPassword", LastName);
+
             return retVal;
         }
 
