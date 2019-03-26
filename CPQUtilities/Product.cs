@@ -293,7 +293,6 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProduct, "IsSAPProduct", IsSAPProduct);
             Utility.AddIfNotEmptyOrNull(userProduct, "Weight", Weight);
             Utility.AddIfNotEmptyOrNull(userProduct, "Image", Image);
-
             Utility.AddIfNotEmptyOrNull(userProduct, "UserCanEnterQuantity", UserCanEnterQuantity);
             Utility.AddIfNotEmptyOrNull(userProduct, "UnitOfMeasure", UnitOfMeasure);
             Utility.AddIfNotEmptyOrNull(userProduct, "PricingMechanism", PricingMechanism);
