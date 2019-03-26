@@ -33,4 +33,17 @@ namespace CPQUtilities
         ExternalId,
         CPQProductID
     }
+
+    public enum ProductGlobalScriptsEventsEvent
+    {
+        OnProductLoaded,
+        OnProductRuleExecutionStart,
+        OnProductRuleExecutionEnd,
+        OnProductTabChanged,
+        OnProductCompleted,
+        OnProductAddedToQuote,
+        OnProductBeforeAddToQuote
+    }
+
+    
 }

@@ -19,63 +19,67 @@ namespace CPQUtilities
         public string CPQProductId { get; set; } //when product is being created, this node is not required; if any value is sent through this node, it will be ignored
         public string PartNumber { get; set; } //Default Value(if node is missing): Empty
         public string UPC { get; set; } //Default value (if node is missing): Empty
-        public string MPN { get; set; }
-        public string ProductFamilyCode { get; set; }
-        public string RecurringPriceFormula { get; set; }
-        public string RecurringCostFormula { get; set; }
-        public string Inventory { get; set; }
-        public string LeadTime { get; set; }
-        public string ProductVersion { get; set; }
-        public string ExternalId { get; set; }
-        public bool Active { get; set; }
-        public string IsSAPProduct { get; set; }
-        public string Weight { get; set; }
-        public string Image { get; set; }
-        public DateTime? StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
-        public string UserCanEnterQuantity { get; set; }
-        public string UnitOfMeasure { get; set; }
-        public string PricingMechanism { get; set; }
-        public string PricingCode { get; set; }
-        public string BaseRecurringPrice { get; set; }
-        public string Price { get; set; }
-        public string PriceFormual { get; set; }
-        public string CostFormula { get; set; }
-        public string Description { get; set; }
-        public string LongDescription { get; set; }
-        public string CartDescription { get; set; }
-        public string Attributes { get; set; }
-        public string AttributeType { get; set; }
-        public string AttributeDisplayType { get; set; }
-        public string AttributeMeasurementType { get; set; }
-        public string AttributeRank { get; set; }
-        public string AttributeLineItem { get; set; }
-        public string AttributeLineItemDescription { get; set; }
-        public string AttributeRankWithinCart { get; set; }
-        public string AttributeSpansAcrossEntireRow { get; set; }
-        public string AttributeRequired { get; set; }
-        public string AttributeLabel { get; set; }
-        public string AttributeHint { get; set; }
-        public string AttributeShowOneTimePrice { get; set; }
-        public string AttributeShowRecurringPrice { get; set; }
-        public string AttributeButtonText { get; set; }
-        public string AttributeAttachScriptButton { get; set; }
-        public string AttributeButtonScriptsAttached { get; set; }
-        public string AttributeButtonScript { get; set; }
-        public string ButtonScriptAttachedRank { get; set; }
-        public string AttributeValuesPreselected { get; set; }
-        public string Tabs { get; set; }
-        public string TabsSystemId { get; set; }
-        public string TabsName { get; set; }
-        public string TabsProductTabRank { get; set; }
-        public string TabsLayoutTemplate { get; set; }
-        public string TabsVisibilityPermission { get; set; }
-        public string TabsVisibilityCondition { get; set; }
-        public string TabsShowTabHeader { get; set; }
-        public string TabsAttributes { get; set; }
-        public string TabsAttributesName { get; set; }
-        public string TabsAttributesRank { get; set; }
-        public string GlobalScripts { get; set; }
+        public string MPN { get; set; } //Default Value (if node is missing) : Empty
+        public string ProductFamilyCode { get; set; } //Default Value (if node is missing) : Empty
+        public string RecurringPriceFormula { get; set; } //Default Value (if node is missing) : Empty
+        public string RecurringCostFormula { get; set; } //Default Value (if node is missing) : Empty
+        public string Inventory { get; set; } //Default Value (if node is missing) : Empty
+        public string LeadTime { get; set; } //Default Value (if node is missing) : Empty
+        public string ProductVersion { get; set; } //Default Value (if node is missing) : 1
+        public string ExternalId { get; set; } //Default Value (if node is missing) : Empty
+        public bool Active { get; set; } //Default Value (if node is missing) : TRUE
+        public string IsSAPProduct { get; set; } //Default Value (if node is missing) : FALSE
+        public string Weight { get; set; } //Default Value (if node is missing) : Empty
+        public string Image { get; set; } //Default Value (if node is missing) : Empty
+        public DateTime? StartDate { get; set; } //Default Value (if node is missing) : Empty
+        public DateTime? EndDate { get; set; } //Default Value (if node is missing) : Empty
+        public string UserCanEnterQuantity { get; set; } //Default Value (if node is missing) : Empty
+        public string UnitOfMeasure { get; set; } //Default Value (if node is missing) : Empty, a three character iso code
+        public string PricingMechanism { get; set; } //Default Value (if node is missing) : Value of application parameter 'As default source for product and attribute price use' (found in Setup>Pricing/Calculations>Pricebooks)
+        public string PricingCode { get; set; } //Default Value (if node is missing) : Empty
+        public string BaseRecurringPrice { get; set; } //Default Value (if node is missing) : Empty
+        public string Price { get; set; } //Default Value (if node is missing) : Empty
+        public string PriceFormual { get; set; } //Default Value (if node is missing) : Empty
+        public string CostFormula { get; set; } //Default Value (if node is missing) : Empty
+        public string Description { get; set; } //Default Value (if node is missing) : Empty
+        public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
+        public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
+        public string Attributes { get; set; } //Default Value (if node is missing) : Empty
+        public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
+        public string AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;
+        public string AttributeMeasurementType { get; set; } //This node is required if Attribute type is UnitsOfMeasurement 
+        public int AttributeRank { get; set; } //This node is optional. If node is not present or it is empty, system will assign rank value in order the values are sent: 10, 20, 30…
+        public string AttributeLineItem { get; set; } //Supported values: 1 for Yes, 0 for No.
+        public string AttributeLineItemDescription { get; set; } //optional; can be translated similar to Product name
+        public int AttributeRankWithinCart { get; set; } //optional; can be set only if "Line item flag" has value 1
+        public string AttributeSpansAcrossEntireRow { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public string AttributeRequired { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public string AttributeLabel { get; set; } //optional; can be translated to Any Language
+        public string AttributeHint { get; set; } //optional; can be translated to Any Language
+        public string AttributeShowOneTimePrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public string AttributeShowRecurringPrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public string AttributeButtonText { get; set; } //plain text or CPQ formula;
+        public string AttributeAttachScriptButton { get; set; } //optional; only supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public string AttributeButtonScriptsAttached { get; set; } //This node will support adding child nodes <ButtonScript> and <Rank>
+        public string AttributeButtonScript { get; set; } //CPQ does not support adding new script over API call. Product administration API can only add a script that already exists within CPQ
+        public string ButtonScriptAttachedRank { get; set; } //rank
+        public string AttributeValuesPreselected { get; set; } //optional
+        public string Tabs { get; set; } //optional; not allowed with Simple Products;
+        public string TabsSystemId { get; set; } //optional; not allowed with Simple Products;
+        public string TabsName { get; set; } //optional; not allowed with Simple Products;
+        public string TabsProductTabRank { get; set; } //optional; not allowed with Simple Products;
+        public string TabsLayoutTemplate { get; set; } //optional; not allowed with Simple Products;
+        public string TabsVisibilityPermission { get; set; } //optional; not allowed with Simple Products;
+        public string TabsVisibilityCondition { get; set; } //optional; not allowed with Simple Products;
+        public string TabsShowTabHeader { get; set; } //optional; not allowed with Simple Products;
+        public string TabsAttributes { get; set; } //optional; not allowed with Simple Products;
+        public string TabsAttributesName { get; set; } //optional; not allowed with Simple Products;
+        public string TabsAttributesRank { get; set; } //optional; not allowed with Simple Products;
+        public string GlobalScripts { get; set; } //optional; not supported for displaytype button
+        public string GlobalScriptsName { get; set; } //child node for GlobalScripts
+        public string GlobalScriptsRank { get; set; } //child node for GlobalScripts
+        public string GlobalScriptsEvents { get; set; } //child node for GlobalScripts
+        public ProductGlobalScriptsEventsEvent GlobalScriptsEventsEvent { get; set; } //child node for GlobalScripts; Supported values: OnProductLoaded, OnProductRuleExecutionStart, OnProductRuleExecutionEnd, OnProductTabChanged, OnProductCompleted, OnProductAddedToQuote, OnProductBeforeAddToQuote
 
 
         //required fields:
