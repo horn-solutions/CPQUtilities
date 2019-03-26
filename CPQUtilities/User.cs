@@ -103,21 +103,21 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProperties, "ADMINISTRATOR", Administrator);
             Utility.AddIfNotEmptyOrNull(userProperties, "CITY", City);
             Utility.AddIfNotEmptyOrNull(userProperties, "STATE", State);
-            Utility.AddIfNotEmptyOrNull(userProperties, "ZIPCODE", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "COUNTRY", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "PHONENUMBER", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "FAXNUMBER", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "COMPANYCODE", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "MUSTCHANGEPASSWORD", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "PASSWORDLOCKED", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "DEFAULTDICTIONARY", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "ORDERINGPARENT", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "MANAGINGPARENT", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "APPROVINGPARENT", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserId", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "CrmName", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserName", LastName);
-            Utility.AddIfNotEmptyOrNull(userProperties, "CrmPassword", LastName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ZIPCODE", ZipCode);
+            Utility.AddIfNotEmptyOrNull(userProperties, "COUNTRY", Country);
+            Utility.AddIfNotEmptyOrNull(userProperties, "PHONENUMBER", PhoneNumber);
+            Utility.AddIfNotEmptyOrNull(userProperties, "FAXNUMBER", FaxNumber);
+            Utility.AddIfNotEmptyOrNull(userProperties, "COMPANYCODE", CompanyCode);
+            Utility.AddIfNotEmptyOrNull(userProperties, "MUSTCHANGEPASSWORD", MustChangePassword);
+            Utility.AddIfNotEmptyOrNull(userProperties, "PASSWORDLOCKED", PasswordLocked);
+            Utility.AddIfNotEmptyOrNull(userProperties, "DEFAULTDICTIONARY", DefaultDictionary);
+            Utility.AddIfNotEmptyOrNull(userProperties, "ORDERINGPARENT", OrderingParent);
+            Utility.AddIfNotEmptyOrNull(userProperties, "MANAGINGPARENT", ManagingParent);
+            Utility.AddIfNotEmptyOrNull(userProperties, "APPROVINGPARENT", ApprovingParent);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserId", CrmUserId);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmName", CrmName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmUserName", CrmUserName);
+            Utility.AddIfNotEmptyOrNull(userProperties, "CrmPassword", CrmPassword);
 
             return retVal;
         }

@@ -171,13 +171,13 @@ namespace CPQUtilities
         public string AttributeLineItemDescription { get; set; } //optional; can be translated similar to Product name
         public int AttributeRankWithinCart { get; set; } //optional; can be set only if "Line item flag" has value 1
         public string AttributeSpansAcrossEntireRow { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
-        public string AttributeRequired { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public int AttributeRequired { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
         public string AttributeLabel { get; set; } //optional; can be translated to Any Language
         public string AttributeHint { get; set; } //optional; can be translated to Any Language
-        public string AttributeShowOneTimePrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
-        public string AttributeShowRecurringPrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public int AttributeShowOneTimePrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public int AttributeShowRecurringPrice { get; set; } //optional; not supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
         public string AttributeButtonText { get; set; } //plain text or CPQ formula;
-        public string AttributeAttachScriptButton { get; set; } //optional; only supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
+        public int AttributeAttachScriptButton { get; set; } //optional; only supported for "Button"; supported values: "1" as True. "0" value is sent in case this flag should be deselected
         public string AttributeButtonScriptsAttached { get; set; } //This node will support adding child nodes <ButtonScript> and <Rank>
         public string AttributeButtonScript { get; set; } //CPQ does not support adding new script over API call. Product administration API can only add a script that already exists within CPQ
         public string ButtonScriptAttachedRank { get; set; } //rank
