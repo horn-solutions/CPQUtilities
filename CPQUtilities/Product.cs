@@ -28,7 +28,7 @@ namespace CPQUtilities
         public string ProductVersion { get; set; }
         public string ExternalId { get; set; }
         public bool Active { get; set; }
-        public string IsSAPProduct { get; set; }
+        public bool IsSAPProduct { get; set; }
         public string Weight { get; set; }
         public string Image { get; set; }
         public DateTime StartDate { get; set; }
@@ -94,9 +94,10 @@ namespace CPQUtilities
             SkipPermissionsOnProductUpdate = false;
             Identificator = PartNumber;
             ShippingCosts = "";
-            Permissions = "Visible to all";
             PartNumber = "";
             UPC = "";
+            Active = true;
+            IsSAPProduct = false;
 
 
         }
