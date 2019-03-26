@@ -39,14 +39,14 @@ namespace CPQUtilities
         public string PricingCode { get; set; } //Default Value (if node is missing) : Empty
         public string BaseRecurringPrice { get; set; } //Default Value (if node is missing) : Empty
         public string Price { get; set; } //Default Value (if node is missing) : Empty
-        public string PriceFormual { get; set; } //Default Value (if node is missing) : Empty
+        public string PriceFormula { get; set; } //Default Value (if node is missing) : Empty
         public string CostFormula { get; set; } //Default Value (if node is missing) : Empty
         public string Description { get; set; } //Default Value (if node is missing) : Empty
         public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
         public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
         public string Attributes { get; set; } //Default Value (if node is missing) : Empty
         public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
-        public string AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;
+        public ProductAttributeDisplayType AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;  
         public string AttributeMeasurementType { get; set; } //This node is required if Attribute type is UnitsOfMeasurement 
         public int AttributeRank { get; set; } //This node is optional. If node is not present or it is empty, system will assign rank value in order the values are sent: 10, 20, 30…
         public string AttributeLineItem { get; set; } //Supported values: 1 for Yes, 0 for No.
@@ -86,7 +86,7 @@ namespace CPQUtilities
         public string ProductType { get; set; }
         public Translations ProductName { get; set; }
         public CategoryList Categories { set; get; }
-        public string CategoryListString { get; set; }
+        //public string CategoryListString { get; set; }
 
 
         public Product()
@@ -120,52 +120,119 @@ namespace CPQUtilities
             //http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example
 
             XmlDocument retVal = new XmlDocument();
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<Products SkipCategoriesOnProductUpdate='" + SkipCategoriesOnProductUpdate.ToString().ToLower() + "' SkipPermissionsOnProductUpdate='" + SkipPermissionsOnProductUpdate.ToString().ToLower() + "' >");
-            sb.AppendLine("<Product>");
-            sb.AppendLine("<Identificator>" + Enum.GetName(typeof(ProductIdentificator), Identificator) + "</Identificator>");
-            sb.AppendLine("<DisplayType>" + Enum.GetName(typeof(ProductDisplayType), DisplayType) + "</DisplayType>");
 
-            sb.AppendLine("<ProductName>");
-            sb.AppendLine(ProductName.ToXML());
-            sb.AppendLine("</ProductName>");
-
-            sb.AppendLine("<PartNumber>" + PartNumber + "</PartNumber>");
-            sb.AppendLine("<ProductType>" + ProductType + "</ProductType>");
-
-            if (StartDate.HasValue) sb.AppendLine("<StartDate>" + StartDate.Value.ToString("M/d/yyyy") + "</StartDate>");
-            if (EndDate.HasValue) sb.AppendLine("<EndDate>" + EndDate.Value.ToString("M/d/yyyy") + "</EndDate>");
-
-            sb.AppendLine("<Categories>");
-            sb.AppendLine(Categories.ToXML());
-            sb.AppendLine("</Categories>");
+            XmlNode userProducts = retVal.CreateElement("PRODUCTS");
+            retVal.AppendChild(userProducts);
 
 
-            sb.AppendLine("</Product>");
-            sb.AppendLine("</Products>");
+            ////These are attributes of Products, still WIP:////
+            //Utility.AddIfNotEmptyOrNull(userProducts, "SKIPCATEGORIESONPRODUCTUPDATE", SkipCategoriesOnProductUpdate);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "SkipPermissionsOnProductUpdate", SkipPermissionsOnProductUpdate);
+            XmlAttribute scopu = retVal.CreateAttribute("SKIPCATEGORIESONPRODUCTUPDATE");
+            scopu.InnerText = SkipCategoriesOnProductUpdate.ToString().ToUpper();
+            userProducts.Attributes.Append(scopu);
+            XmlAttribute spopu = retVal.CreateAttribute("SkipPermissionsOnProductUpdate");
+            scopu.InnerText = SkipPermissionsOnProductUpdate.ToString().ToUpper();
+            userProducts.Attributes.Append(spopu);
 
 
-            retVal.LoadXml(sb.ToString());
+            Utility.AddIfNotEmptyOrNull(userProducts, "IDENTIFICATOR", Identificator);
+            Utility.AddIfNotEmptyOrNull(userProducts, "DISPLAYTYPE", DisplayType);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PRODUCTNAME", ProductName);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PARTNUMBER", PartNumber);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PRODUCTType", ProductType);
+
+            if (StartDate.HasValue)
+            {
+                Utility.AddIfNotEmptyOrNull(userProducts, "STARTDATE", StartDate);
+            }
+
+            if (EndDate.HasValue)
+            {
+                Utility.AddIfNotEmptyOrNull(userProducts, "ENDDATE", EndDate);
+            }
+
+            Utility.AddIfNotEmptyOrNull(userProducts, "CATEGORIES", Categories);
+
+
+            Utility.AddIfNotEmptyOrNull(userProducts, "ShippingCosts", ShippingCosts);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Permissions", Permissions);
+            Utility.AddIfNotEmptyOrNull(userProducts, "CPQProductId", CPQProductId);
+            Utility.AddIfNotEmptyOrNull(userProducts, "UPC", UPC);
+            Utility.AddIfNotEmptyOrNull(userProducts, "MPN", MPN);
+            Utility.AddIfNotEmptyOrNull(userProducts, "ProductFamilyCode", ProductFamilyCode);
+            Utility.AddIfNotEmptyOrNull(userProducts, "RecurringPriceFormula", RecurringPriceFormula);
+            Utility.AddIfNotEmptyOrNull(userProducts, "RecurringCostFormula", RecurringCostFormula);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Inventory", Inventory);
+            Utility.AddIfNotEmptyOrNull(userProducts, "LeadTime", LeadTime);
+            Utility.AddIfNotEmptyOrNull(userProducts, "ProductVersion", ProductVersion);
+            Utility.AddIfNotEmptyOrNull(userProducts, "ExternalId", ExternalId);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Active", Active);
+            Utility.AddIfNotEmptyOrNull(userProducts, "IsSAPProduct", IsSAPProduct);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Weight", Weight);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Image", Image);
+
+            Utility.AddIfNotEmptyOrNull(userProducts, "UserCanEnterQuantity", UserCanEnterQuantity);
+            Utility.AddIfNotEmptyOrNull(userProducts, "UnitOfMeasure", UnitOfMeasure);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PricingMechanism", PricingMechanism);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PricingCode", PricingCode);
+            Utility.AddIfNotEmptyOrNull(userProducts, "BaseRecurringPrice", BaseRecurringPrice);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Price", Price);
+            Utility.AddIfNotEmptyOrNull(userProducts, "PriceFormula", PriceFormula);
+            Utility.AddIfNotEmptyOrNull(userProducts, "CostFormula", CostFormula);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Description", Description);
+            Utility.AddIfNotEmptyOrNull(userProducts, "LongDescription", LongDescription);
+            Utility.AddIfNotEmptyOrNull(userProducts, "CartDescription", CartDescription);
+            Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes);
+
+            ////Attribute Child nodes, still WIP:////
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeType", AttributeType);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeDisplayType", AttributeDisplayType);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeMeasurementType", AttributeMeasurementType);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRank", AttributeRank);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLineItem", AttributeLineItem);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLineItemDescription", AttributeLineItemDescription);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRankWithinCart", AttributeRankWithinCart);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeSpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRequired", AttributeRequired);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLabel", AttributeLabel);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeHint", AttributeHint);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeShowOneTimePrice", AttributeShowOneTimePrice);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeShowRecurringPrice", AttributeShowRecurringPrice);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonText", AttributeButtonText);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeAttachScriptButton", AttributeAttachScriptButton);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonScriptsAttached", AttributeButtonScriptsAttached);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonScript", AttributeButtonScript);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeValuesPreselected", AttributeValuesPreselected);
+
+            Utility.AddIfNotEmptyOrNull(userProducts, "Tabs", Tabs);
+            ////Tabs Child Nodes, still WIP:////
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsSystemId", TabsSystemId);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsName", TabsName);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsProductTabRank", TabsProductTabRank);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsLayoutTemplate", TabsLayoutTemplate);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsVisibilityPermission", TabsVisibilityPermission);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsVisibilityCondition", TabsVisibilityCondition);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsShowTabHeader", TabsShowTabHeader);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributes", TabsAttributes);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributesName", TabsAttributesName);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributesRank", TabsAttributesRank);
+
+            Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScripts", GlobalScripts);
+            ////GlobalScripts Child Nodes, still WIP:////
+            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsName", GlobalScriptsName);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsRank", GlobalScriptsRank);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsEvents", GlobalScriptsEvents);
+            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
+
             return retVal;
+
+
+           
         }
 
-        //private void CheckAndAdd(StringBuilder stringBuilder, string nodeName, object value)
-        //{
-        //    if (value == null) return;
-
-        //    switch (value.GetType().Name)
-        //    {
-        //        case "string":
-        //            if (string.IsNullOrEmpty((string)value))
-        //                return;
-        //            else
-        //                stringBuilder.AppendLine(string.Format("<{0}><![CDATA[{{{1}}}]]></{0}>", value));
-        //            break;
-
-        //        default:
-        //            break;
-        //    }
-        //}
+       
 
         public static Product LoadFromXML(XmlDocument xdoc)
         {
