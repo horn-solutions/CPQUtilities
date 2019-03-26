@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Credentials.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="Generics.cs" />
     <Compile Include="Get.cs" />
     <Compile Include="Product.cs" />

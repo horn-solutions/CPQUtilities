@@ -7,8 +7,126 @@ using System.Xml;
 
 namespace CPQUtilities
 {
+    //minimal XML used to create a product (product name, type and category are required nodes)
+//    <Products>
+//  <Product>  
+//    <ProductType>Cardio</ProductType>
+//    <ProductName>
+//      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
+//    </ProductName>
+//    <Categories>
+//      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
+//    </Categories>
+//  </Product>
+//</Products>
+
+
+//overall example pulled from API site:
+//<Products SkipCategoriesOnProductUpdate = "false" SkipPermissionsOnProductUpdate="false" >
+//  <Product>
+//    <Identificator>PartNumber</Identificator>
+//    <ShippingCosts>
+//      <ShippingName_1><![CDATA[some formula]]></ShippingName_1>
+//      <ShippingName_2><![CDATA[some formula]]></ShippingName_2>
+//    </ShippingCosts>
+//    <Permissions>Sales;Sales Management</Permissions>
+//    <CPQProductID><![CDATA[some_product_id]]></CPQProductID>
+//    <PartNumber>DA353LNAL00</PartNumber>
+//    <UPC><![CDATA[some_upc_num]]></UPC>
+//    <MPN><![CDATA[some_mpn_num]]></MPN>
+//    <ProductFamilyCode><![CDATA[some_prod_fam_code]]></ProductFamilyCode>
+//    <RecurringPriceFormula><![CDATA[some_rec_price_formula]]></RecurringPriceFormula>
+//    <RecurringCostFormula><![CDATA[some_rec_cost_formula]]></RecurringCostFormula>
+//    <Inventory>1234</Inventory>
+//    <LeadTime><![CDATA[3 weeks]]></LeadTime>
+//    <ProductVersion><![CDATA[pv12]]></ProductVersion>
+//    <ExternalId><![CDATA[some_ext_id]]></ExternalId>
+//    <Active>true</Active>
+//    <Weight>136.00</Weight>
+//    <Image><![CDATA[image.jpg]]></Image>
+//    <StartDate>1/31/2010</StartDate>
+//    <EndDate>1/31/2011</EndDate>
+//    <UserCanEnterQuantity>1</UserCanEnterQuantity>
+//    <PricingMechanism>Custom Pricing</PricingMechanism>
+//    <PricingCode><![CDATA[some pricing code]]></PricingCode>
+//    <BaseRecurringPrice>1234</BaseRecurringPrice>
+//    <Price>1234.45</Price>
+//    <LongDescription>Some long description here</LongDescription>
+//    <PriceFormula><![CDATA[136]]></PriceFormula>
+//    <CostFormula><![CDATA[136]]></CostFormula>
+//    <ProductType>Cardio</ProductType>
+//    <ProductName>
+//      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
+//      <French><![CDATA[Step Excite+ 500]]></French>
+//    </ProductName>
+//    <Description>
+//      <USEnglish><![CDATA[description english]]></USEnglish>
+//      <French><![CDATA[description French]]></French>
+//    </Description>
+//    <CartDescription>
+//      <USEnglish><![CDATA[cart description english]]></USEnglish>
+//      <French><![CDATA[cart description French]]></French>
+//    </CartDescription>
+//    <Categories>
+//      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
+//      <French><![CDATA[Cardios>Excites+ Class]]></French>
+//    </Categories>
+//    <Attributes>
+//      <Attribute>
+//        <AttributeName>
+//          <USEnglish><![CDATA[LINE]]></USEnglish>
+//          <French><![CDATA[LINEA]]></French>
+//        </AttributeName>
+//        <Values>
+//          <Value>
+//            <USEnglish><![CDATA[Excite+]]></USEnglish>
+//            <French><![CDATA[Excite+]]></French>
+//          </Value>
+//        </Values>
+//      </Attribute>
+//      <Attribute>
+//        <AttributeName>
+//          <USEnglish><![CDATA[MODEL]]></USEnglish>
+//          <French><![CDATA[MODELLO]]></French>
+//        </AttributeName>
+//        <Values>
+//          <Value>
+//            <USEnglish><![CDATA[Step]]></USEnglish>
+//            <French><![CDATA[Step]]></French>
+//          </Value>
+//        </Values>
+//      </Attribute>
+//      <Attribute>
+//        <AttributeName>
+//          <USEnglish><![CDATA[VERSION]]></USEnglish>
+//          <French><![CDATA[VERSIONE]]></French>
+//        </AttributeName>
+//        <Values>
+//          <Value>
+//            <USEnglish><![CDATA[500]]></USEnglish>
+//            <French><![CDATA[500]]></French>
+//          </Value>
+//        </Values>
+//      </Attribute>
+//      <Attribute>
+//        <AttributeName>
+//          <USEnglish><![CDATA[FRAME]]></USEnglish>
+//          <French><![CDATA[TELAIO]]></French>
+//        </AttributeName>
+//        <Values>
+//          <Value>
+//            <USEnglish><![CDATA[Grey]]></USEnglish>
+//            <French><![CDATA[Argento]]></French>
+//          </Value>
+//        </Values>
+//      </Attribute>
+//    </Attributes>
+//  </Product>
+//</Products>
+
     public class Product
     {
+
         //not required:
         public ProductDisplayType DisplayType { get; set; } //supports values: Simple, Configurable, System, Collection, Parent_child; default type is "Simple product"
         public bool SkipCategoriesOnProductUpdate { get; set; } //default value (if attribute is missing): false
@@ -124,6 +242,8 @@ namespace CPQUtilities
             XmlNode userProducts = retVal.CreateElement("PRODUCTS");
             retVal.AppendChild(userProducts);
 
+            XmlNode userProduct = retVal.CreateElement("PRODUCT");
+            retVal.AppendChild(userProduct);
 
             ////These are attributes of Products, still WIP:////
             //Utility.AddIfNotEmptyOrNull(userProducts, "SKIPCATEGORIESONPRODUCTUPDATE", SkipCategoriesOnProductUpdate);
@@ -136,95 +256,102 @@ namespace CPQUtilities
             userProducts.Attributes.Append(spopu);
 
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "IDENTIFICATOR", Identificator);
-            Utility.AddIfNotEmptyOrNull(userProducts, "DISPLAYTYPE", DisplayType);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PRODUCTNAME", ProductName);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PARTNUMBER", PartNumber);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PRODUCTType", ProductType);
+            Utility.AddIfNotEmptyOrNull(userProduct, "IDENTIFICATOR", Identificator);
+            Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PARTNUMBER", PartNumber);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTType", ProductType);
 
             if (StartDate.HasValue)
             {
-                Utility.AddIfNotEmptyOrNull(userProducts, "STARTDATE", StartDate);
+                Utility.AddIfNotEmptyOrNull(userProduct, "STARTDATE", StartDate);
             }
 
             if (EndDate.HasValue)
             {
-                Utility.AddIfNotEmptyOrNull(userProducts, "ENDDATE", EndDate);
+                Utility.AddIfNotEmptyOrNull(userProduct, "ENDDATE", EndDate);
             }
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "CATEGORIES", Categories);
+            Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", Categories.ToString());
 
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "ShippingCosts", ShippingCosts);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Permissions", Permissions);
-            Utility.AddIfNotEmptyOrNull(userProducts, "CPQProductId", CPQProductId);
-            Utility.AddIfNotEmptyOrNull(userProducts, "UPC", UPC);
-            Utility.AddIfNotEmptyOrNull(userProducts, "MPN", MPN);
-            Utility.AddIfNotEmptyOrNull(userProducts, "ProductFamilyCode", ProductFamilyCode);
-            Utility.AddIfNotEmptyOrNull(userProducts, "RecurringPriceFormula", RecurringPriceFormula);
-            Utility.AddIfNotEmptyOrNull(userProducts, "RecurringCostFormula", RecurringCostFormula);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Inventory", Inventory);
-            Utility.AddIfNotEmptyOrNull(userProducts, "LeadTime", LeadTime);
-            Utility.AddIfNotEmptyOrNull(userProducts, "ProductVersion", ProductVersion);
-            Utility.AddIfNotEmptyOrNull(userProducts, "ExternalId", ExternalId);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Active", Active);
-            Utility.AddIfNotEmptyOrNull(userProducts, "IsSAPProduct", IsSAPProduct);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Weight", Weight);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Image", Image);
+            Utility.AddIfNotEmptyOrNull(userProduct, "ShippingCosts", ShippingCosts);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Permissions", Permissions);
+            Utility.AddIfNotEmptyOrNull(userProduct, "CPQProductId", CPQProductId);
+            Utility.AddIfNotEmptyOrNull(userProduct, "UPC", UPC);
+            Utility.AddIfNotEmptyOrNull(userProduct, "MPN", MPN);
+            Utility.AddIfNotEmptyOrNull(userProduct, "ProductFamilyCode", ProductFamilyCode);
+            Utility.AddIfNotEmptyOrNull(userProduct, "RecurringPriceFormula", RecurringPriceFormula);
+            Utility.AddIfNotEmptyOrNull(userProduct, "RecurringCostFormula", RecurringCostFormula);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Inventory", Inventory);
+            Utility.AddIfNotEmptyOrNull(userProduct, "LeadTime", LeadTime);
+            Utility.AddIfNotEmptyOrNull(userProduct, "ProductVersion", ProductVersion);
+            Utility.AddIfNotEmptyOrNull(userProduct, "ExternalId", ExternalId);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Active", Active);
+            Utility.AddIfNotEmptyOrNull(userProduct, "IsSAPProduct", IsSAPProduct);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Weight", Weight);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Image", Image);
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "UserCanEnterQuantity", UserCanEnterQuantity);
-            Utility.AddIfNotEmptyOrNull(userProducts, "UnitOfMeasure", UnitOfMeasure);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PricingMechanism", PricingMechanism);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PricingCode", PricingCode);
-            Utility.AddIfNotEmptyOrNull(userProducts, "BaseRecurringPrice", BaseRecurringPrice);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Price", Price);
-            Utility.AddIfNotEmptyOrNull(userProducts, "PriceFormula", PriceFormula);
-            Utility.AddIfNotEmptyOrNull(userProducts, "CostFormula", CostFormula);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Description", Description);
-            Utility.AddIfNotEmptyOrNull(userProducts, "LongDescription", LongDescription);
-            Utility.AddIfNotEmptyOrNull(userProducts, "CartDescription", CartDescription);
-            Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes);
+            Utility.AddIfNotEmptyOrNull(userProduct, "UserCanEnterQuantity", UserCanEnterQuantity);
+            Utility.AddIfNotEmptyOrNull(userProduct, "UnitOfMeasure", UnitOfMeasure);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PricingMechanism", PricingMechanism);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PricingCode", PricingCode);
+            Utility.AddIfNotEmptyOrNull(userProduct, "BaseRecurringPrice", BaseRecurringPrice);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Price", Price);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PriceFormula", PriceFormula);
+            Utility.AddIfNotEmptyOrNull(userProduct, "CostFormula", CostFormula);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Description", Description);
+            Utility.AddIfNotEmptyOrNull(userProduct, "LongDescription", LongDescription);
+            Utility.AddIfNotEmptyOrNull(userProduct, "CartDescription", CartDescription);
 
+            //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
+            //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
             ////Attribute Child nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeType", AttributeType);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeDisplayType", AttributeDisplayType);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeMeasurementType", AttributeMeasurementType);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRank", AttributeRank);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLineItem", AttributeLineItem);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLineItemDescription", AttributeLineItemDescription);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRankWithinCart", AttributeRankWithinCart);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeSpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeRequired", AttributeRequired);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeLabel", AttributeLabel);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeHint", AttributeHint);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeShowOneTimePrice", AttributeShowOneTimePrice);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeShowRecurringPrice", AttributeShowRecurringPrice);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonText", AttributeButtonText);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeAttachScriptButton", AttributeAttachScriptButton);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonScriptsAttached", AttributeButtonScriptsAttached);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeButtonScript", AttributeButtonScript);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "AttributeValuesPreselected", AttributeValuesPreselected);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "Type", AttributeType);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "DisplayType", AttributeDisplayType);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "MeasurementType", AttributeMeasurementType);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "Rank", AttributeRank);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "LineItem", AttributeLineItem);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "LineItemDescription", AttributeLineItemDescription);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "RankWithinCart", AttributeRankWithinCart);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "SpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "Required", AttributeRequired);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "Label", AttributeLabel);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "Hint", AttributeHint);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ShowOneTimePrice", AttributeShowOneTimePrice);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ShowRecurringPrice", AttributeShowRecurringPrice);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonText", AttributeButtonText);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "AttachScriptButton", AttributeAttachScriptButton);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ValuesPreselected", AttributeValuesPreselected);
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "Tabs", Tabs);
+            //Buttons is child of Attributes; 
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScriptsAttached", AttributeButtonScriptsAttached);
+
+            ////ButtonScriptsAttached Child Nodes, still WIP:////
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScript", AttributeButtonScript);
+            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
+
+
+
+            Utility.AddIfNotEmptyOrNull(userProduct, "Tabs", Tabs);
             ////Tabs Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsSystemId", TabsSystemId);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsName", TabsName);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsProductTabRank", TabsProductTabRank);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsLayoutTemplate", TabsLayoutTemplate);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsVisibilityPermission", TabsVisibilityPermission);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsVisibilityCondition", TabsVisibilityCondition);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsShowTabHeader", TabsShowTabHeader);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributes", TabsAttributes);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributesName", TabsAttributesName);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "TabsAttributesRank", TabsAttributesRank);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsSystemId", TabsSystemId);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsName", TabsName);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsProductTabRank", TabsProductTabRank);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsLayoutTemplate", TabsLayoutTemplate);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityPermission", TabsVisibilityPermission);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityCondition", TabsVisibilityCondition);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsShowTabHeader", TabsShowTabHeader);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributes", TabsAttributes);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesName", TabsAttributesName);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesRank", TabsAttributesRank);
 
-            Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScripts", GlobalScripts);
+            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScripts", GlobalScripts);
             ////GlobalScripts Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsName", GlobalScriptsName);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsRank", GlobalScriptsRank);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsEvents", GlobalScriptsEvents);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsName", GlobalScriptsName);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsRank", GlobalScriptsRank);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEvents", GlobalScriptsEvents);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
 
             return retVal;
 
