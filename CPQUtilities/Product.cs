@@ -162,6 +162,7 @@ namespace CPQUtilities
         public string Description { get; set; } //Default Value (if node is missing) : Empty
         public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
         public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
+
         public string Attributes { get; set; } //Default Value (if node is missing) : Empty
         public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
         public ProductAttributeDisplayType AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;  
@@ -182,6 +183,7 @@ namespace CPQUtilities
         public string AttributeButtonScript { get; set; } //CPQ does not support adding new script over API call. Product administration API can only add a script that already exists within CPQ
         public string ButtonScriptAttachedRank { get; set; } //rank
         public string AttributeValuesPreselected { get; set; } //optional
+
         public string Tabs { get; set; } //optional; not allowed with Simple Products;
         public string TabsSystemId { get; set; } //optional; not allowed with Simple Products;
         public string TabsName { get; set; } //optional; not allowed with Simple Products;
@@ -193,6 +195,7 @@ namespace CPQUtilities
         public string TabsAttributes { get; set; } //optional; not allowed with Simple Products;
         public string TabsAttributesName { get; set; } //optional; not allowed with Simple Products;
         public string TabsAttributesRank { get; set; } //optional; not allowed with Simple Products;
+
         public string GlobalScripts { get; set; } //optional; not supported for displaytype button
         public string GlobalScriptsName { get; set; } //child node for GlobalScripts
         public string GlobalScriptsRank { get; set; } //child node for GlobalScripts
@@ -242,12 +245,7 @@ namespace CPQUtilities
             XmlNode userProducts = retVal.CreateElement("PRODUCTS");
             retVal.AppendChild(userProducts);
 
-            XmlNode userProduct = retVal.CreateElement("PRODUCT");
-            retVal.AppendChild(userProduct);
-
             ////These are attributes of Products, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProducts, "SKIPCATEGORIESONPRODUCTUPDATE", SkipCategoriesOnProductUpdate);
-            //Utility.AddIfNotEmptyOrNull(userProducts, "SkipPermissionsOnProductUpdate", SkipPermissionsOnProductUpdate);
             XmlAttribute scopu = retVal.CreateAttribute("SKIPCATEGORIESONPRODUCTUPDATE");
             scopu.InnerText = SkipCategoriesOnProductUpdate.ToString().ToUpper();
             userProducts.Attributes.Append(scopu);
@@ -255,6 +253,10 @@ namespace CPQUtilities
             scopu.InnerText = SkipPermissionsOnProductUpdate.ToString().ToUpper();
             userProducts.Attributes.Append(spopu);
 
+
+            //Product Tag: <PRODUCTS><PRODUCT>
+            XmlNode userProduct = retVal.CreateElement("PRODUCT");
+            userProducts.AppendChild(userProduct);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "IDENTIFICATOR", Identificator);
             Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);

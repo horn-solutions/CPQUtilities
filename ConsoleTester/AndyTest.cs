@@ -22,7 +22,7 @@ namespace ConsoleTester
             p.ProductType = "Product Type 1";
 
             //this doesn't do what you think it does.
-            Console.WriteLine(p.CreateXml().ToString());
+            Console.WriteLine(p.CreateXml().InnerXml);
 
             Console.ReadLine();
 
