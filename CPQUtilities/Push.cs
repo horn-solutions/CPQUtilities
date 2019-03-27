@@ -47,7 +47,8 @@ namespace CPQUtilities
             XmlDocument xDoc = product.CreateXml();
             
 
-            XmlNode response = service.SimpleProductAdministration(credentials.Username, credentials.Password, "ADDORUPDATE", xDoc);
+            XmlNode response = service.SimpleProductAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
+            Console.WriteLine(response.InnerXml); ;
 
 
 

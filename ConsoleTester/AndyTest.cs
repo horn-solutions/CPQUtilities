@@ -21,7 +21,7 @@ namespace ConsoleTester
             p.ProductName = new Translations("AndyProductAPITest1");
             p.Categories = new CategoryList();
             p.Categories.Add(new Translations("Software Devices"));
-            //p.CategoryListString = "Software Devices";
+            
             p.ProductType = "Software";
             p.Active = true;
 
@@ -31,8 +31,8 @@ namespace ConsoleTester
             Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
             //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
             //Push.Product(p, c);
-            Console.WriteLine("Tried to push product");
-
+            //Console.WriteLine("Tried to push product");
+            
             Console.ReadLine();
 
 

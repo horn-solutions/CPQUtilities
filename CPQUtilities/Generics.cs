@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CPQUtilities
 {
@@ -12,7 +13,7 @@ namespace CPQUtilities
         public Translations() { }
         public Translations(string EnglishLabel)
         {
-            this.Add("US English", EnglishLabel);
+            this.Add("USEnglish", EnglishLabel);
         }
 
         internal string ToXML()
@@ -23,23 +24,18 @@ namespace CPQUtilities
                 sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
             }
 
-            //new testing code:
-            //string XMLString = sb.ToString();
-            //XMLString.Replace("&lt;", "<")
-            //                                       .Replace("&amp;", "&")
-            //                                       .Replace("&gt;", ">")
-            //                                       .Replace("&quot;", "\"")
-            //                                       .Replace("&apos;", "'");
-            //return XMLString;
 
-           
+
+
             return sb.ToString(); //old working code
         }
+
+        
     }
 
     public class CategoryList : List<Translations>
     {
-        internal string ToXML()
+        private Translations GetSingleSet()
         {
             Translations temp = new Translations();
 
@@ -53,25 +49,41 @@ namespace CPQUtilities
                         temp.Add(key, t[key] + ";");
                 }
             }
+            return temp;
 
+            //StringBuilder sb = new StringBuilder();
 
-            StringBuilder sb = new StringBuilder();
-            //old working code:
-            foreach (string key in temp.Keys)
-                sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
-
-            //new testing code:
             //foreach (string key in temp.Keys)
-            //    sb.Append(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
-            //string XMLString = sb.ToString();
-            //XMLString.Replace("&lt;", "<")
-            //                                       .Replace("&amp;", "&")
-            //                                       .Replace("&gt;", ">")
-            //                                       .Replace("&quot;", "\"")
-            //                                       .Replace("&apos;", "'");
-            //return XMLString;
+            //    sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
 
-            return sb.ToString(); //old working code
+
+
+            //return sb.ToString(); //old working code
+        }
+
+        internal void AddToXML(XmlNode parentNode)
+        {
+
+            //    <Categories>
+            //      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
+            //      <French><![CDATA[Cardios>Excites+ Class]]></French>
+            //    </Categories>
+
+
+            if (this.Count == 0)
+                return;
+
+            XmlNode newNode = parentNode.OwnerDocument.CreateElement("Categories");
+            Translations temp = GetSingleSet();
+            foreach (string key in temp.Keys)
+            {
+                XmlNode newLanguageNode = parentNode.OwnerDocument.CreateElement(key);
+                newLanguageNode.AppendChild(parentNode.OwnerDocument.CreateCDataSection((string)temp[key]));
+                newNode.AppendChild(newLanguageNode);
+
+            }
+            parentNode.AppendChild(newNode);
+
         }
     }
 }

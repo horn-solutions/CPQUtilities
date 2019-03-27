@@ -8,121 +8,121 @@ using System.Xml;
 namespace CPQUtilities
 {
     //minimal XML used to create a product (product name, type and category are required nodes)
-//    <Products>
-//  <Product>  
-//    <ProductType>Cardio</ProductType>
-//    <ProductName>
-//      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
-//    </ProductName>
-//    <Categories>
-//      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
-//    </Categories>
-//  </Product>
-//</Products>
+    //    <Products>
+    //  <Product>  
+    //    <ProductType>Cardio</ProductType>
+    //    <ProductName>
+    //      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
+    //    </ProductName>
+    //    <Categories>
+    //      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
+    //    </Categories>
+    //  </Product>
+    //</Products>
 
 
-//overall example pulled from API site:
-//<Products SkipCategoriesOnProductUpdate = "false" SkipPermissionsOnProductUpdate="false" >
-//  <Product>
-//    <Identificator>PartNumber</Identificator>
-//    <ShippingCosts>
-//      <ShippingName_1><![CDATA[some formula]]></ShippingName_1>
-//      <ShippingName_2><![CDATA[some formula]]></ShippingName_2>
-//    </ShippingCosts>
-//    <Permissions>Sales;Sales Management</Permissions>
-//    <CPQProductID><![CDATA[some_product_id]]></CPQProductID>
-//    <PartNumber>DA353LNAL00</PartNumber>
-//    <UPC><![CDATA[some_upc_num]]></UPC>
-//    <MPN><![CDATA[some_mpn_num]]></MPN>
-//    <ProductFamilyCode><![CDATA[some_prod_fam_code]]></ProductFamilyCode>
-//    <RecurringPriceFormula><![CDATA[some_rec_price_formula]]></RecurringPriceFormula>
-//    <RecurringCostFormula><![CDATA[some_rec_cost_formula]]></RecurringCostFormula>
-//    <Inventory>1234</Inventory>
-//    <LeadTime><![CDATA[3 weeks]]></LeadTime>
-//    <ProductVersion><![CDATA[pv12]]></ProductVersion>
-//    <ExternalId><![CDATA[some_ext_id]]></ExternalId>
-//    <Active>true</Active>
-//    <Weight>136.00</Weight>
-//    <Image><![CDATA[image.jpg]]></Image>
-//    <StartDate>1/31/2010</StartDate>
-//    <EndDate>1/31/2011</EndDate>
-//    <UserCanEnterQuantity>1</UserCanEnterQuantity>
-//    <PricingMechanism>Custom Pricing</PricingMechanism>
-//    <PricingCode><![CDATA[some pricing code]]></PricingCode>
-//    <BaseRecurringPrice>1234</BaseRecurringPrice>
-//    <Price>1234.45</Price>
-//    <LongDescription>Some long description here</LongDescription>
-//    <PriceFormula><![CDATA[136]]></PriceFormula>
-//    <CostFormula><![CDATA[136]]></CostFormula>
-//    <ProductType>Cardio</ProductType>
-//    <ProductName>
-//      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
-//      <French><![CDATA[Step Excite+ 500]]></French>
-//    </ProductName>
-//    <Description>
-//      <USEnglish><![CDATA[description english]]></USEnglish>
-//      <French><![CDATA[description French]]></French>
-//    </Description>
-//    <CartDescription>
-//      <USEnglish><![CDATA[cart description english]]></USEnglish>
-//      <French><![CDATA[cart description French]]></French>
-//    </CartDescription>
-//    <Categories>
-//      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
-//      <French><![CDATA[Cardios>Excites+ Class]]></French>
-//    </Categories>
-//    <Attributes>
-//      <Attribute>
-//        <AttributeName>
-//          <USEnglish><![CDATA[LINE]]></USEnglish>
-//          <French><![CDATA[LINEA]]></French>
-//        </AttributeName>
-//        <Values>
-//          <Value>
-//            <USEnglish><![CDATA[Excite+]]></USEnglish>
-//            <French><![CDATA[Excite+]]></French>
-//          </Value>
-//        </Values>
-//      </Attribute>
-//      <Attribute>
-//        <AttributeName>
-//          <USEnglish><![CDATA[MODEL]]></USEnglish>
-//          <French><![CDATA[MODELLO]]></French>
-//        </AttributeName>
-//        <Values>
-//          <Value>
-//            <USEnglish><![CDATA[Step]]></USEnglish>
-//            <French><![CDATA[Step]]></French>
-//          </Value>
-//        </Values>
-//      </Attribute>
-//      <Attribute>
-//        <AttributeName>
-//          <USEnglish><![CDATA[VERSION]]></USEnglish>
-//          <French><![CDATA[VERSIONE]]></French>
-//        </AttributeName>
-//        <Values>
-//          <Value>
-//            <USEnglish><![CDATA[500]]></USEnglish>
-//            <French><![CDATA[500]]></French>
-//          </Value>
-//        </Values>
-//      </Attribute>
-//      <Attribute>
-//        <AttributeName>
-//          <USEnglish><![CDATA[FRAME]]></USEnglish>
-//          <French><![CDATA[TELAIO]]></French>
-//        </AttributeName>
-//        <Values>
-//          <Value>
-//            <USEnglish><![CDATA[Grey]]></USEnglish>
-//            <French><![CDATA[Argento]]></French>
-//          </Value>
-//        </Values>
-//      </Attribute>
-//    </Attributes>
-//  </Product>
-//</Products>
+    //overall example pulled from API site:
+    //<Products SkipCategoriesOnProductUpdate = "false" SkipPermissionsOnProductUpdate="false" >
+    //  <Product>
+    //    <Identificator>PartNumber</Identificator>
+    //    <ShippingCosts>
+    //      <ShippingName_1><![CDATA[some formula]]></ShippingName_1>
+    //      <ShippingName_2><![CDATA[some formula]]></ShippingName_2>
+    //    </ShippingCosts>
+    //    <Permissions>Sales;Sales Management</Permissions>
+    //    <CPQProductID><![CDATA[some_product_id]]></CPQProductID>
+    //    <PartNumber>DA353LNAL00</PartNumber>
+    //    <UPC><![CDATA[some_upc_num]]></UPC>
+    //    <MPN><![CDATA[some_mpn_num]]></MPN>
+    //    <ProductFamilyCode><![CDATA[some_prod_fam_code]]></ProductFamilyCode>
+    //    <RecurringPriceFormula><![CDATA[some_rec_price_formula]]></RecurringPriceFormula>
+    //    <RecurringCostFormula><![CDATA[some_rec_cost_formula]]></RecurringCostFormula>
+    //    <Inventory>1234</Inventory>
+    //    <LeadTime><![CDATA[3 weeks]]></LeadTime>
+    //    <ProductVersion><![CDATA[pv12]]></ProductVersion>
+    //    <ExternalId><![CDATA[some_ext_id]]></ExternalId>
+    //    <Active>true</Active>
+    //    <Weight>136.00</Weight>
+    //    <Image><![CDATA[image.jpg]]></Image>
+    //    <StartDate>1/31/2010</StartDate>
+    //    <EndDate>1/31/2011</EndDate>
+    //    <UserCanEnterQuantity>1</UserCanEnterQuantity>
+    //    <PricingMechanism>Custom Pricing</PricingMechanism>
+    //    <PricingCode><![CDATA[some pricing code]]></PricingCode>
+    //    <BaseRecurringPrice>1234</BaseRecurringPrice>
+    //    <Price>1234.45</Price>
+    //    <LongDescription>Some long description here</LongDescription>
+    //    <PriceFormula><![CDATA[136]]></PriceFormula>
+    //    <CostFormula><![CDATA[136]]></CostFormula>
+    //    <ProductType>Cardio</ProductType>
+    //    <ProductName>
+    //      <USEnglish><![CDATA[Step Excite+ 500]]></USEnglish>
+    //      <French><![CDATA[Step Excite+ 500]]></French>
+    //    </ProductName>
+    //    <Description>
+    //      <USEnglish><![CDATA[description english]]></USEnglish>
+    //      <French><![CDATA[description French]]></French>
+    //    </Description>
+    //    <CartDescription>
+    //      <USEnglish><![CDATA[cart description english]]></USEnglish>
+    //      <French><![CDATA[cart description French]]></French>
+    //    </CartDescription>
+    //    <Categories>
+    //      <USEnglish><![CDATA[Cardio>Excite+ Class]]></USEnglish>
+    //      <French><![CDATA[Cardios>Excites+ Class]]></French>
+    //    </Categories>
+    //    <Attributes>
+    //      <Attribute>
+    //        <AttributeName>
+    //          <USEnglish><![CDATA[LINE]]></USEnglish>
+    //          <French><![CDATA[LINEA]]></French>
+    //        </AttributeName>
+    //        <Values>
+    //          <Value>
+    //            <USEnglish><![CDATA[Excite+]]></USEnglish>
+    //            <French><![CDATA[Excite+]]></French>
+    //          </Value>
+    //        </Values>
+    //      </Attribute>
+    //      <Attribute>
+    //        <AttributeName>
+    //          <USEnglish><![CDATA[MODEL]]></USEnglish>
+    //          <French><![CDATA[MODELLO]]></French>
+    //        </AttributeName>
+    //        <Values>
+    //          <Value>
+    //            <USEnglish><![CDATA[Step]]></USEnglish>
+    //            <French><![CDATA[Step]]></French>
+    //          </Value>
+    //        </Values>
+    //      </Attribute>
+    //      <Attribute>
+    //        <AttributeName>
+    //          <USEnglish><![CDATA[VERSION]]></USEnglish>
+    //          <French><![CDATA[VERSIONE]]></French>
+    //        </AttributeName>
+    //        <Values>
+    //          <Value>
+    //            <USEnglish><![CDATA[500]]></USEnglish>
+    //            <French><![CDATA[500]]></French>
+    //          </Value>
+    //        </Values>
+    //      </Attribute>
+    //      <Attribute>
+    //        <AttributeName>
+    //          <USEnglish><![CDATA[FRAME]]></USEnglish>
+    //          <French><![CDATA[TELAIO]]></French>
+    //        </AttributeName>
+    //        <Values>
+    //          <Value>
+    //            <USEnglish><![CDATA[Grey]]></USEnglish>
+    //            <French><![CDATA[Argento]]></French>
+    //          </Value>
+    //        </Values>
+    //      </Attribute>
+    //    </Attributes>
+    //  </Product>
+    //</Products>
 
     public class Product
     {
@@ -266,7 +266,10 @@ namespace CPQUtilities
 
             Utility.AddIfNotEmptyOrNull(userProduct, "IDENTIFICATOR", Identificator);
             Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);
-            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName);
+
+            //same issue that Categories had, need to look in Generics and utilize same code in Category:
+            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName.ToXML());
+
             Utility.AddIfNotEmptyOrNull(userProduct, "PARTNUMBER", PartNumber);
             Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTType", ProductType);
 
@@ -280,7 +283,8 @@ namespace CPQUtilities
                 Utility.AddIfNotEmptyOrNull(userProduct, "ENDDATE", EndDate);
             }
 
-            Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", Categories.ToXML().ToString());
+            if (Categories != null)
+                Categories.AddToXML(userProduct);
             //Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", CategoryListString);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "ShippingCosts", ShippingCosts);
@@ -367,10 +371,10 @@ namespace CPQUtilities
             return retVal;
 
 
-           
+
         }
 
-       
+
 
         public static Product LoadFromXML(XmlDocument xdoc)
         {
