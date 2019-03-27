@@ -163,7 +163,7 @@ namespace CPQUtilities
         public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
         public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
 
-        public string Attributes { get; set; } //Default Value (if node is missing) : Empty
+        public string AttributeName { get; set; } //Default Value (if node is missing) : Empty
         public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
         public ProductAttributeDisplayType AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;  
         public string AttributeMeasurementType { get; set; } //This node is required if Attribute type is UnitsOfMeasurement 
@@ -305,6 +305,10 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProduct, "LongDescription", LongDescription);
             Utility.AddIfNotEmptyOrNull(userProduct, "CartDescription", CartDescription);
 
+
+            //The Attribute Input Parameters conflict with Input XML Examples. Some Parameters show up in Examples that are not part of the Input Parameters list. 
+            //see: http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example vs http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:product_admin_webmethod_inputxml
+
             //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
             //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
             ////Attribute Child nodes, still WIP:////
@@ -333,8 +337,8 @@ namespace CPQUtilities
             //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
 
 
-
-            Utility.AddIfNotEmptyOrNull(userProduct, "Tabs", Tabs);
+            //tabs node is not allowed with Simple products;
+            //Utility.AddIfNotEmptyOrNull(userProduct, "Tabs", Tabs);
             ////Tabs Child Nodes, still WIP:////
             //Utility.AddIfNotEmptyOrNull(userProduct, "TabsSystemId", TabsSystemId);
             //Utility.AddIfNotEmptyOrNull(userProduct, "TabsName", TabsName);
@@ -347,7 +351,7 @@ namespace CPQUtilities
             //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesName", TabsAttributesName);
             //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesRank", TabsAttributesRank);
 
-            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScripts", GlobalScripts);
+            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScripts", GlobalScripts);
             ////GlobalScripts Child Nodes, still WIP:////
             //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsName", GlobalScriptsName);
             //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsRank", GlobalScriptsRank);

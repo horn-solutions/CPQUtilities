@@ -26,7 +26,11 @@ namespace CPQUtilities
         public static Product GetProductByProductId(int productId, Credentials credentials)
         {
             Product retVal = null;
+            WsSrv.WsSrv service = new WsSrv.WsSrv();
+            //wait 200 seconds:
+            service.Timeout = 200 * 1000;
 
+            
 
 
             return retVal;
