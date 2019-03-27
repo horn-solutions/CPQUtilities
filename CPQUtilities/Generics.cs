@@ -12,14 +12,16 @@ namespace CPQUtilities
         public Translations() { }
         public Translations(string EnglishLabel)
         {
-            this.Add("USEnglish", EnglishLabel);
+            this.Add("US English", EnglishLabel);
         }
 
         internal string ToXML()
         {
             StringBuilder sb = new StringBuilder();
             foreach (string key in Keys)
+            {
                 sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
+            }
 
             //new testing code:
             //string XMLString = sb.ToString();
