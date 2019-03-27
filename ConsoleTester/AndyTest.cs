@@ -17,16 +17,19 @@ namespace ConsoleTester
             Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
 
             Product p = new Product();
-            p.ProductName = new Translations("ProductName1");
+            p.ProductName = new Translations("AndyProductAPITest1");
             p.Categories = new CategoryList();
-            p.Categories.Add(new Translations("Category 1"));
-            p.ProductType = "Product Type 1";
+            p.Categories.Add(new Translations("Software Devices"));
+            //p.CategoryListString = "Software Devices";
+            p.ProductType = "Software";
+            p.Active = true;
 
             
            
             //this doesn't do what you think it does.
-            Console.WriteLine(p.CreateXml().InnerXml);
-            Push.Product(p, c);
+            Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
+            //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
+            //Push.Product(p, c);
             Console.WriteLine("Tried to push product");
 
             Console.ReadLine();

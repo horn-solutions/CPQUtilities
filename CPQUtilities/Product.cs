@@ -206,8 +206,8 @@ namespace CPQUtilities
         //required fields:
         public string ProductType { get; set; }
         public Translations ProductName { get; set; }
-        public CategoryList Categories { set; get; }
-        //public string CategoryListString { get; set; }
+        public CategoryList Categories { get; set; }
+        public string CategoryListString { get; set; }
 
 
         public Product()
@@ -246,12 +246,18 @@ namespace CPQUtilities
             retVal.AppendChild(userProducts);
 
             ////These are attributes of Products, still WIP:////
-            XmlAttribute scopu = retVal.CreateAttribute("SKIPCATEGORIESONPRODUCTUPDATE");
-            scopu.InnerText = SkipCategoriesOnProductUpdate.ToString().ToUpper();
-            userProducts.Attributes.Append(scopu);
-            XmlAttribute spopu = retVal.CreateAttribute("SkipPermissionsOnProductUpdate");
-            scopu.InnerText = SkipPermissionsOnProductUpdate.ToString().ToUpper();
-            userProducts.Attributes.Append(spopu);
+            if (SkipCategoriesOnProductUpdate != false)
+            {
+                XmlAttribute scopu = retVal.CreateAttribute("SKIPCATEGORIESONPRODUCTUPDATE");
+                scopu.InnerText = SkipCategoriesOnProductUpdate.ToString().ToUpper();
+                userProducts.Attributes.Append(scopu);
+            }
+            if (SkipPermissionsOnProductUpdate != false)
+            {
+                XmlAttribute spopu = retVal.CreateAttribute("SkipPermissionsOnProductUpdate");
+                spopu.InnerText = SkipPermissionsOnProductUpdate.ToString().ToUpper();
+                userProducts.Attributes.Append(spopu);
+            }
 
 
             //Product Tag: <PRODUCTS><PRODUCT>
@@ -274,8 +280,8 @@ namespace CPQUtilities
                 Utility.AddIfNotEmptyOrNull(userProduct, "ENDDATE", EndDate);
             }
 
-            Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", Categories.ToString());
-
+            Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", Categories.ToXML().ToString());
+            //Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", CategoryListString);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "ShippingCosts", ShippingCosts);
             Utility.AddIfNotEmptyOrNull(userProduct, "Permissions", Permissions);

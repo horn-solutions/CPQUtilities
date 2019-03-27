@@ -20,7 +20,18 @@ namespace CPQUtilities
             StringBuilder sb = new StringBuilder();
             foreach (string key in Keys)
                 sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
-            return sb.ToString();
+
+            //new testing code:
+            //string XMLString = sb.ToString();
+            //XMLString.Replace("&lt;", "<")
+            //                                       .Replace("&amp;", "&")
+            //                                       .Replace("&gt;", ">")
+            //                                       .Replace("&quot;", "\"")
+            //                                       .Replace("&apos;", "'");
+            //return XMLString;
+
+           
+            return sb.ToString(); //old working code
         }
     }
 
@@ -43,10 +54,22 @@ namespace CPQUtilities
 
 
             StringBuilder sb = new StringBuilder();
+            //old working code:
             foreach (string key in temp.Keys)
                 sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
 
-            return sb.ToString();
+            //new testing code:
+            //foreach (string key in temp.Keys)
+            //    sb.Append(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
+            //string XMLString = sb.ToString();
+            //XMLString.Replace("&lt;", "<")
+            //                                       .Replace("&amp;", "&")
+            //                                       .Replace("&gt;", ">")
+            //                                       .Replace("&quot;", "\"")
+            //                                       .Replace("&apos;", "'");
+            //return XMLString;
+
+            return sb.ToString(); //old working code
         }
     }
 }
