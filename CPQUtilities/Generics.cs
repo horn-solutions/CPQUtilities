@@ -21,7 +21,8 @@ namespace CPQUtilities
             StringBuilder sb = new StringBuilder();
             foreach (string key in Keys)
             {
-                sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
+                //sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, this[key]));
+                sb.AppendLine("<" + key + "><![CDATA[" + this[key] + "]]></" + key + ">");
             }
 
 
