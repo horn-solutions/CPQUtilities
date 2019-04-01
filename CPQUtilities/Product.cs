@@ -205,7 +205,7 @@ namespace CPQUtilities
 
         //required fields:
         public string ProductType { get; set; }
-        public Translations ProductName { get; set; }
+        public ProductList ProductName { get; set; }
         public CategoryList Categories { get; set; }
         public string CategoryListString { get; set; }
 
@@ -268,7 +268,9 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);
 
             //same issue that Categories had, need to look in Generics and utilize same code in Category:
-            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName.ToXML());
+            //Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName.ToXML());
+            if (ProductName != null)
+                ProductName.AddToXML(userProduct);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "PARTNUMBER", PartNumber);
             Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTType", ProductType);

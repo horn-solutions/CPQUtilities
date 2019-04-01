@@ -18,7 +18,8 @@ namespace ConsoleTester
             Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
 
             Product p = new Product();
-            p.ProductName = new Translations("AndyProductAPITest1");
+            p.ProductName = new ProductList();
+            p.ProductName.Add(new Translations("AndyProductAPITest1"));
             p.Categories = new CategoryList();
             p.Categories.Add(new Translations("Software Devices"));
             
