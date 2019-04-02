@@ -31,8 +31,8 @@ namespace ConsoleTester
             //this doesn't do what you think it does.
             Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
             //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
-            //Push.Product(p, c);
-            //Console.WriteLine("Tried to push product");
+            Push.Product(p, c);
+            Console.WriteLine("Tried to push product");
             
             Console.ReadLine();
 

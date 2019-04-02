@@ -214,11 +214,11 @@ namespace CPQUtilities
         {
             //set defaults here
             //http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example
-            Permissions = "Visible to all";
+            //Permissions = "Visible to all";
             SkipCategoriesOnProductUpdate = false;
             SkipPermissionsOnProductUpdate = false;
             Identificator = ProductIdentificator.PartNumber;
-            Permissions = "Visible to all";
+            //Permissions = "Visible to all";
         }
 
         private bool IsValid()
@@ -242,7 +242,7 @@ namespace CPQUtilities
 
             XmlDocument retVal = new XmlDocument();
 
-            XmlNode userProducts = retVal.CreateElement("PRODUCTS");
+            XmlNode userProducts = retVal.CreateElement("Products");
             retVal.AppendChild(userProducts);
 
             ////These are attributes of Products, still WIP:////
@@ -261,19 +261,23 @@ namespace CPQUtilities
 
 
             //Product Tag: <PRODUCTS><PRODUCT>
-            XmlNode userProduct = retVal.CreateElement("PRODUCT");
+            XmlNode userProduct = retVal.CreateElement("Product");
             userProducts.AppendChild(userProduct);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "IDENTIFICATOR", Identificator);
             Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);
 
-            //same issue that Categories had, need to look in Generics and utilize same code in Category:
-            //Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTNAME", ProductName.ToXML());
+           
+            Utility.AddIfNotEmptyOrNull(userProduct, "ProductType", ProductType);
+
             if (ProductName != null)
                 ProductName.AddToXML(userProduct);
 
+            if (Categories != null)
+                Categories.AddToXML(userProduct);
+
             Utility.AddIfNotEmptyOrNull(userProduct, "PARTNUMBER", PartNumber);
-            Utility.AddIfNotEmptyOrNull(userProduct, "PRODUCTType", ProductType);
+           
 
             if (StartDate.HasValue)
             {
@@ -285,8 +289,7 @@ namespace CPQUtilities
                 Utility.AddIfNotEmptyOrNull(userProduct, "ENDDATE", EndDate);
             }
 
-            if (Categories != null)
-                Categories.AddToXML(userProduct);
+           
             //Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", CategoryListString);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "ShippingCosts", ShippingCosts);
