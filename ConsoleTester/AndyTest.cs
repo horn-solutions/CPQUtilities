@@ -12,6 +12,11 @@ namespace ConsoleTester
     {
         public static void test(string[] args)
         {
+
+
+
+
+            //CPQ Add a Product:
             Credentials c = new Credentials();
             
             Console.Write(string.Format("Logging in as {0}", c.Login));
