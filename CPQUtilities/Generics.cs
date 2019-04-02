@@ -62,7 +62,7 @@ namespace CPQUtilities
                 foreach (string key in t.Keys)
                 {
                     if (temp.ContainsKey(key))
-                        temp[key] += ";" + t[key] + ";";
+                        temp[key] += ";" + t[key];
                     else
                         temp.Add(key, t[key] + "");
                 }
