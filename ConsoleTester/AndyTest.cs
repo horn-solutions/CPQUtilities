@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.IO;
 
 namespace ConsoleTester
 {
@@ -36,23 +37,23 @@ namespace ConsoleTester
             //this doesn't do what you think it does.
             Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
             //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
-            Push.Product(p, c);
-            Console.WriteLine("Tried to push product");
-            
-            Console.ReadLine();
+            //Push.Product(p, c);
+            // Console.WriteLine("Tried to push product");
+
+
 
 
             //Excel code:
 
             //Excel.Application app = new Excel.Application();
 
-            ///*
-            // * this is important, if your code crashes, excel will be running but invisible.  
-            // * 
-            // * check your running processes frequently when doing excel work
-            // * 
-            // * having excel visible while making changes is dangerous because someone could click and it runs much slower
-            // */
+            /////*
+            //// * this is important, if your code crashes, excel will be running but invisible.  
+            //// * 
+            //// * check your running processes frequently when doing excel work
+            //// * 
+            //// * having excel visible while making changes is dangerous because someone could click and it runs much slower
+            //// */
             //app.Visible = true;
             //string path = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             //Excel.Workbook wbin = app.Workbooks.Open(Path.Combine(path, "sample.xlsx"));
@@ -74,8 +75,10 @@ namespace ConsoleTester
             //        wsout.Cells[line, col + 1] = wsin.Cells[line, col];
             //}
 
-
+            Console.ReadLine();
 
         }
+
+       
     }
 }
