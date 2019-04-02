@@ -15,8 +15,6 @@ namespace ConsoleTester
         {
 
 
-
-
             //CPQ Add a Product:
             Credentials c = new Credentials();
             
