@@ -111,16 +111,16 @@ namespace CPQUtilities
         {
             Translations temp = new Translations();
 
-            //foreach (Translations t in this)
-            //{
-            //    foreach (string key in t.Keys)
-            //    {
-            //        if (temp.ContainsKey(key))
-            //            temp[key] += t[key] + ";";
-            //        else
-            //            temp.Add(key, t[key] + ";");
-            //    }
-            //}
+            foreach (Translations t in this)
+            {
+                foreach (string key in t.Keys)
+                {
+                    if (temp.ContainsKey(key))
+                        temp[key] += t[key] + "";
+                    else
+                        temp.Add(key, t[key] + "");
+                }
+            }
             return temp;
 
             //StringBuilder sb = new StringBuilder();
