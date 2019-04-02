@@ -159,4 +159,112 @@ namespace CPQUtilities
 
         }
     }
+
+    public class AttributeList : List<Translations>
+    {
+        private Translations GetSingleSet()
+        {
+            Translations temp = new Translations();
+
+            foreach (Translations t in this)
+            {
+                foreach (string key in t.Keys)
+                {
+                    if (temp.ContainsKey(key))
+                        temp[key] += t[key] + "";
+                    else
+                        temp.Add(key, t[key] + "");
+                }
+            }
+            return temp;
+
+            //StringBuilder sb = new StringBuilder();
+
+            //foreach (string key in temp.Keys)
+            //    sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
+
+
+
+            //return sb.ToString(); //old working code
+        }
+
+        internal void AddToXML(XmlNode parentNode)
+        {
+
+            //    <AttributeName>
+          //      < USEnglish >< ![CDATA[VERSION]] ></ USEnglish >
+         //       < French >< ![CDATA[VERSIONE]] ></ French >
+        //        </ AttributeName >
+
+
+            if (this.Count == 0)
+                return;
+
+            XmlNode newNode = parentNode.OwnerDocument.CreateElement("AttributeName");
+            Translations temp = GetSingleSet();
+            foreach (string key in temp.Keys)
+            {
+                XmlNode newLanguageNode = parentNode.OwnerDocument.CreateElement(key);
+                newLanguageNode.AppendChild(parentNode.OwnerDocument.CreateCDataSection((string)temp[key]));
+                newNode.AppendChild(newLanguageNode);
+
+            }
+            parentNode.AppendChild(newNode);
+
+        }
+    }
+
+    public class AttributeValueList : List<Translations>
+    {
+        private Translations GetSingleSet()
+        {
+            Translations temp = new Translations();
+
+            foreach (Translations t in this)
+            {
+                foreach (string key in t.Keys)
+                {
+                    if (temp.ContainsKey(key))
+                        temp[key] += t[key] + "";
+                    else
+                        temp.Add(key, t[key] + "");
+                }
+            }
+            return temp;
+
+            //StringBuilder sb = new StringBuilder();
+
+            //foreach (string key in temp.Keys)
+            //    sb.AppendLine(string.Format("<{0}><![CDATA[{1}]]></{0}>", key, temp[key]));
+
+
+
+            //return sb.ToString(); //old working code
+        }
+
+        internal void AddToXML(XmlNode parentNode)
+        {
+
+            //    <Value>
+            //    < USEnglish >< ![CDATA[500]] ></ USEnglish >
+            //   < French >< ![CDATA[500]] ></ French >
+            //    </Value>
+
+
+            if (this.Count == 0)
+                return;
+
+            XmlNode newNode = parentNode.OwnerDocument.CreateElement("Value");
+            Translations temp = GetSingleSet();
+            foreach (string key in temp.Keys)
+            {
+                XmlNode newLanguageNode = parentNode.OwnerDocument.CreateElement(key);
+                newLanguageNode.AppendChild(parentNode.OwnerDocument.CreateCDataSection((string)temp[key]));
+                newNode.AppendChild(newLanguageNode);
+
+            }
+            parentNode.AppendChild(newNode);
+
+        }
+    }
 }

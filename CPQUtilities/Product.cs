@@ -163,7 +163,8 @@ namespace CPQUtilities
         public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
         public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
 
-        public string AttributeName { get; set; } //Default Value (if node is missing) : Empty
+        public AttributeList AttributeName { get; set; } //Default Value (if node is missing) : Empty
+        public AttributeValueList AttributeValue { get; set; } //not defined within XML help files; use at your own risk!
         public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
         public ProductAttributeDisplayType AttributeDisplayType { get; set; } //Default Value (if node is missing) : DropDown; Attribute Display type Custom control is not supported on API call; Attribute type Container cannot be created over API call;  
         public string AttributeMeasurementType { get; set; } //This node is required if Attribute type is UnitsOfMeasurement 
@@ -248,7 +249,7 @@ namespace CPQUtilities
             ////These are attributes of Products, still WIP:////
             if (SkipCategoriesOnProductUpdate != false)
             {
-                XmlAttribute scopu = retVal.CreateAttribute("SKIPCATEGORIESONPRODUCTUPDATE");
+                XmlAttribute scopu = retVal.CreateAttribute("SkipCategoriesOnProductUpdate");
                 scopu.InnerText = SkipCategoriesOnProductUpdate.ToString().ToUpper();
                 userProducts.Attributes.Append(scopu);
             }
@@ -264,8 +265,8 @@ namespace CPQUtilities
             XmlNode userProduct = retVal.CreateElement("Product");
             userProducts.AppendChild(userProduct);
 
-            Utility.AddIfNotEmptyOrNull(userProduct, "IDENTIFICATOR", Identificator);
-            Utility.AddIfNotEmptyOrNull(userProduct, "DISPLAYTYPE", DisplayType);
+            Utility.AddIfNotEmptyOrNull(userProduct, "Identificator", Identificator);
+            Utility.AddIfNotEmptyOrNull(userProduct, "DisplayType", DisplayType);
 
            
             Utility.AddIfNotEmptyOrNull(userProduct, "ProductType", ProductType);
@@ -276,17 +277,17 @@ namespace CPQUtilities
             if (Categories != null)
                 Categories.AddToXML(userProduct);
 
-            Utility.AddIfNotEmptyOrNull(userProduct, "PARTNUMBER", PartNumber);
+            Utility.AddIfNotEmptyOrNull(userProduct, "PartNumber", PartNumber);
            
 
             if (StartDate.HasValue)
             {
-                Utility.AddIfNotEmptyOrNull(userProduct, "STARTDATE", StartDate);
+                Utility.AddIfNotEmptyOrNull(userProduct, "StartDate", StartDate);
             }
 
             if (EndDate.HasValue)
             {
-                Utility.AddIfNotEmptyOrNull(userProduct, "ENDDATE", EndDate);
+                Utility.AddIfNotEmptyOrNull(userProduct, "EndDate", EndDate);
             }
 
            
@@ -324,32 +325,53 @@ namespace CPQUtilities
             //The Attribute Input Parameters conflict with Input XML Examples. Some Parameters show up in Examples that are not part of the Input Parameters list. 
             //see: http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example vs http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:product_admin_webmethod_inputxml
 
+            if (AttributeName != null)
+            {
+                //<Attributes></Attributes>
+                XmlNode userProductAttributes = retVal.CreateElement("Attributes");
+                userProduct.AppendChild(userProductAttributes);
+
+                //<Attributes><Attribute></Attribute></Attributes>
+                XmlNode userProductAttribute = retVal.CreateElement("Attribute");
+                userProductAttributes.AppendChild(userProductAttribute);
+
+                AttributeName.AddToXML(userProductAttribute);
+                XmlNode userProductAttributeValues = retVal.CreateElement("Values");
+                userProductAttribute.AppendChild(userProductAttributeValues);
+
+                if (AttributeValue != null)
+                    AttributeValue.AddToXML(userProductAttributeValues);
+                
+
+            }
+
+
             //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
             //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
             ////Attribute Child nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "Type", AttributeType);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "DisplayType", AttributeDisplayType);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "MeasurementType", AttributeMeasurementType);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "Rank", AttributeRank);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "LineItem", AttributeLineItem);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "LineItemDescription", AttributeLineItemDescription);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "RankWithinCart", AttributeRankWithinCart);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "SpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "Required", AttributeRequired);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "Label", AttributeLabel);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "Hint", AttributeHint);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ShowOneTimePrice", AttributeShowOneTimePrice);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ShowRecurringPrice", AttributeShowRecurringPrice);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonText", AttributeButtonText);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "AttachScriptButton", AttributeAttachScriptButton);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ValuesPreselected", AttributeValuesPreselected);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Type", AttributeType);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "DisplayType", AttributeDisplayType);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "MeasurementType", AttributeMeasurementType);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Rank", AttributeRank);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItem", AttributeLineItem);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItemDescription", AttributeLineItemDescription);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "RankWithinCart", AttributeRankWithinCart);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "SpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Required", AttributeRequired);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Label", AttributeLabel);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Hint", AttributeHint);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowOneTimePrice", AttributeShowOneTimePrice);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowRecurringPrice", AttributeShowRecurringPrice);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonText", AttributeButtonText);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "AttachScriptButton", AttributeAttachScriptButton);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ValuesPreselected", AttributeValuesPreselected);
 
             //Buttons is child of Attributes; 
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScriptsAttached", AttributeButtonScriptsAttached);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptsAttached", AttributeButtonScriptsAttached);
 
             ////ButtonScriptsAttached Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScript", AttributeButtonScript);
-            //Utility.AddIfNotEmptyOrNull(userAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScript", AttributeButtonScript);
+            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
 
 
             //tabs node is not allowed with Simple products;

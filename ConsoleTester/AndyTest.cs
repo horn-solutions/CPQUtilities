@@ -31,17 +31,20 @@ namespace ConsoleTester
             
             p.ProductType = "Software";
             p.Active = true;
-
+            p.AttributeName = new AttributeList();
+            p.AttributeName.Add(new Translations("Attribute1"));
+            p.AttributeValue = new AttributeValueList();
+            p.AttributeValue.Add(new Translations("500"));
             Console.WriteLine("----------");
            
             //this doesn't do what you think it does.
             Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
             //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
-            //Push.Product(p, c);
-            // Console.WriteLine("Tried to push product");
+            Push.Product(p, c);
+            Console.WriteLine("Tried to push product");
 
-
-
+            //probably, when looping through above for mulitple projects, should attempt to clear lists so as not to duplicate?
+            //example: p.AttributeName.Clear();
 
             //Excel code:
 
