@@ -128,7 +128,8 @@ namespace CPQUtilities
     {
 
         //not required:
-        public ProductDisplayType DisplayType { get; set; } //supports values: Simple, Configurable, System, Collection, Parent_child; default type is "Simple product"
+        //public ProductDisplayType DisplayType { get; set; } //supports values: Simple, Configurable, System, Collection, Parent_child; default type is "Simple product"
+        public string DisplayType { get; set; }
         public bool SkipCategoriesOnProductUpdate { get; set; } //default value (if attribute is missing): false
         public bool SkipPermissionsOnProductUpdate { get; set; } //default value (if attribute is missing): false
         public ProductIdentificator Identificator { get; set; } //default value (if node is missing): PartNumber

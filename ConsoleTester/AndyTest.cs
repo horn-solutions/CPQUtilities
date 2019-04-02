@@ -23,27 +23,46 @@ namespace ConsoleTester
             Console.Write(string.Format("Logging in as {0}", c.Login));
             Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
 
+            //Create Product:
             Product p = new Product();
+            //define Product Name(REQUIRED!!)
             p.ProductName = new ProductList();
             p.ProductName.Add(new Translations("AndyProductAPITest1"));
+
+            //define Product Category (REQUIRED!)
             p.Categories = new CategoryList();
             p.Categories.Add(new Translations("Software Devices"));
-            
+
+            //define Product Type(REQUIRED!)
             p.ProductType = "Software";
+
+            //define Product display type? (defaults to Simple product if node not included, recommend not to include in general, only include when not wanting a simple product)
+            p.DisplayType = "Configurable";
+            //p.DisplayType = ProductDisplayType.Configurable; 
+            
+
+            //define Active State (not required), defaults to true if missing;
             p.Active = true;
+
+            //define Attribute names
             p.AttributeName = new AttributeList();
             p.AttributeName.Add(new Translations("Attribute1"));
+
+            //define Attribute values
             p.AttributeValue = new AttributeValueList();
             p.AttributeValue.Add(new Translations("500"));
+
             Console.WriteLine("----------");
            
             //this doesn't do what you think it does.
             Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
-            //Console.WriteLine("Inner Tex: " + p.CreateXml().InnerText);
+            
+            
+            //Attempt to Push the product and any defined variables for that product
             Push.Product(p, c);
             Console.WriteLine("Tried to push product");
 
-            //probably, when looping through above for mulitple projects, should attempt to clear lists so as not to duplicate?
+            //probably, when looping through above for mulitple products, should attempt to clear lists so as not to duplicate?
             //example: p.AttributeName.Clear();
 
             //Excel code:
