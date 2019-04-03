@@ -57,7 +57,7 @@ namespace ConsoleTester
             
             
             //Attempt to Push the product and any defined variables for that product
-            Push.Product(p, c);
+            //Push.Product(p, c);
             Console.WriteLine("Tried to push product");
 
             //probably, when looping through above for mulitple products, should attempt to clear lists so as not to duplicate?
