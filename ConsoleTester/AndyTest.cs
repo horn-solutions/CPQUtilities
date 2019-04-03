@@ -15,51 +15,73 @@ namespace ConsoleTester
         {
 
 
-            //CPQ Add a Product:
+            
+
+            //[][][][][CPQ ADD A PRODUCT][][][][]
+            //Credentials Information
             Credentials c = new Credentials();
             
+            //Test Credentials for instance:
             Console.Write(string.Format("Logging in as {0}", c.Login));
             Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
 
             //Create Product:
             Product p = new Product();
-            //define Product Name(REQUIRED!!)
+            //[][][][][][][][][][][][][][][][][][][][][][]
+
+
+            //[][][][][DEFINE PRODUCT NAME(REQUIRED!)][][][][]
             p.ProductName = new ProductList();
             p.ProductName.Add(new Translations("AndyProductAPITest1"));
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
-            //define Product Category (REQUIRED!)
+            //[][][][][DEFINE PRODUCT CATEGORY(REQUIRED!)][][][][]
             p.Categories = new CategoryList();
             p.Categories.Add(new Translations("Software Devices"));
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
-            //define Product Type(REQUIRED!)
+            //[][][][][DEFINE PRODUCT TYPE(REQUIRED!)][][][][]
             p.ProductType = "Software";
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
-            //define Product display type? (defaults to Simple product if node not included, recommend not to include in general, only include when not wanting a simple product)
+            //[][][][][DEFINE PRODUCT DISPLAY TYPE][][][][]
+            //(defaults to Simple product if node not included, recommend not to include in general, 
+            //only include when not wanting a simple product, otherwise just comment out)
             p.DisplayType = "Configurable";
             //p.DisplayType = ProductDisplayType.Configurable; 
-            
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
+
+            //[][][][][DEFINE ACTIVE STATE][][][][]
             //define Active State (not required), defaults to true if missing;
             p.Active = true;
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
+            //[][][][][ATTRIBUTES][][][][]
             //define Attribute names
             p.AttributeName = new AttributeList();
             p.AttributeName.Add(new Translations("Attribute1"));
-
+            
             //define Attribute values
             p.AttributeValue = new AttributeValueList();
             p.AttributeValue.Add(new Translations("500"));
 
             Console.WriteLine("----------");
-           
-            //this doesn't do what you think it does.
-            Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
-            
-            
-            //Attempt to Push the product and any defined variables for that product
-            //Push.Product(p, c);
-            Console.WriteLine("Tried to push product");
+            //[][][][][][][][][][][][][][][][][][][][][][]
 
+            //[][][][][][][][][][][][][][][][][][][][][][]
+            //show XML generated from above, that will be pushed to CPQ for adding products:
+            Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
+            //[][][][][][][][][][][][][][][][][][][][][][]
+
+
+            //[][][][][][][][][][][][][][][][][][][][][][]
+            //Attempt to Push the product and any defined variables for that product:
+            //Push.Product(p, c); //comment this out when not wanting to push products
+            Console.WriteLine("Tried to push product");
+            //[][][][][][][][][][][][][][][][][][][][][][]
+
+            //[][][][][][][][][][][][][][][][][][][][][][]
             //probably, when looping through above for mulitple products, should attempt to clear lists so as not to duplicate?
             //example: p.AttributeName.Clear();
 
