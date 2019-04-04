@@ -194,9 +194,21 @@ namespace ConsoleTester
 
             Console.WriteLine(u.CreateXml().InnerXml);
 
-            Console.ReadLine();
+            
 
 
+        }
+
+        public static void GetCatalogue()
+        {
+            Credentials c = new Credentials();
+            Console.Write(string.Format("Logging in as {0}", c.Login));
+            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe2() ? "Successful" : "Unsuccessful"));
+
+            //Get Catalogue info:
+            Console.WriteLine(Get.Catalogue(c));
+
+            
         }
 
     }
