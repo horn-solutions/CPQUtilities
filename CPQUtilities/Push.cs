@@ -66,10 +66,10 @@ namespace CPQUtilities
 
             //complete list of WsSrv operations: https://www.webcomcpq.com/wsAPI/wssrv.asmx
 
-            WsSrv.WsSrv service = new WsSrv.WsSrv();
+            //WsSrv.WsSrv service = new WsSrv.WsSrv();
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             //wait 200 seconds:
-            service.Timeout = 200 * 1000;
+            //service.Timeout = 200 * 1000;
             cpq_service.Timeout = 200 * 1000;
             //  < Customers >
             //    < Customer >

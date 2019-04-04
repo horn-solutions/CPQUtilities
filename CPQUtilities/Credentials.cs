@@ -15,6 +15,7 @@ namespace CPQUtilities
         public string Domain { get; set; }
 
         public string Login { get { return string.Format("{0}#{1}", Username, Domain); } }
+        //public string Login2 { get { return string.Format("{0}@{1}", Username, Domain); } }
 
         public bool DoYouSeeMe()
         {
