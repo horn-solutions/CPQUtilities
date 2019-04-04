@@ -19,8 +19,14 @@ namespace ConsoleTester
             //AddProduct();
 
             ////Add a Customer:
-           //Console.Write("Call Add Customer Code:");
-           // AddCustomer();
+            //Console.Write("Call Add Customer Code:");
+            // AddCustomer();
+
+            ////Add a User:
+            //Console.Write("Call Add User Code:");
+            //AddUser();
+
+
             //Excel code:
 
             //Excel.Application app = new Excel.Application();
@@ -175,7 +181,20 @@ namespace ConsoleTester
 
         public static void AddUser()
         {
+            Credentials c = new Credentials();
+            Console.Write(string.Format("Logging in as {0}", c.Login));
+            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
+            User u = new User()
+            {
+                Username = "Duder",
+                Password = "123123",
+                FirstName = "Duder",
+                LastName = "Dudie"
+            };
 
+            Console.WriteLine(u.CreateXml().InnerXml);
+
+            Console.ReadLine();
 
 
         }

@@ -70,7 +70,7 @@ namespace CPQUtilities
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             //wait 200 seconds:
             service.Timeout = 200 * 1000;
-
+            cpq_service.Timeout = 200 * 1000;
             //  < Customers >
             //    < Customer >
             //      < Id > 23 </ Id >
