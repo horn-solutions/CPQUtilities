@@ -32,5 +32,15 @@ namespace CPQUtilities.Properties {
                 return ((string)(this["CPQUtilities_WsSrv_WsSrv"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.webcomcpq.com/wsAPI/CPQAPI.asmx")]
+        public string CPQUtilities_com_webcomcpq_www_CpqApi {
+            get {
+                return ((string)(this["CPQUtilities_com_webcomcpq_www_CpqApi"]));
+            }
+        }
     }
 }

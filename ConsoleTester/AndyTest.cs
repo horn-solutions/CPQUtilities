@@ -14,77 +14,13 @@ namespace ConsoleTester
         public static void test(string[] args)
         {
 
+            ////Add a Product
+            //Console.Write("Calling Add Product Code:");
+            //AddProduct();
 
-            
-
-            //[][][][][CPQ ADD A PRODUCT][][][][]
-            //Credentials Information
-            Credentials c = new Credentials();
-            
-            //Test Credentials for instance:
-            Console.Write(string.Format("Logging in as {0}", c.Login));
-            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
-
-            //Create Product:
-            Product p = new Product();
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-
-            //[][][][][DEFINE PRODUCT NAME(REQUIRED!)][][][][]
-            p.ProductName = new ProductList();
-            p.ProductName.Add(new Translations("AndyProductAPITest1"));
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][DEFINE PRODUCT CATEGORY(REQUIRED!)][][][][]
-            p.Categories = new CategoryList();
-            p.Categories.Add(new Translations("Software Devices"));
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][DEFINE PRODUCT TYPE(REQUIRED!)][][][][]
-            p.ProductType = "Software";
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][DEFINE PRODUCT DISPLAY TYPE][][][][]
-            //(defaults to Simple product if node not included, recommend not to include in general, 
-            //only include when not wanting a simple product, otherwise just comment out)
-            p.DisplayType = "Configurable";
-            //p.DisplayType = ProductDisplayType.Configurable; 
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-
-            //[][][][][DEFINE ACTIVE STATE][][][][]
-            //define Active State (not required), defaults to true if missing;
-            p.Active = true;
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][ATTRIBUTES][][][][]
-            //define Attribute names
-            p.AttributeName = new AttributeList();
-            p.AttributeName.Add(new Translations("Attribute1"));
-            
-            //define Attribute values
-            p.AttributeValue = new AttributeValueList();
-            p.AttributeValue.Add(new Translations("500"));
-
-            Console.WriteLine("----------");
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][][][][][][][][][][][][][][][][][][]
-            //show XML generated from above, that will be pushed to CPQ for adding products:
-            Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-
-            //[][][][][][][][][][][][][][][][][][][][][][]
-            //Attempt to Push the product and any defined variables for that product:
-            //Push.Product(p, c); //comment this out when not wanting to push products
-            Console.WriteLine("Tried to push product");
-            //[][][][][][][][][][][][][][][][][][][][][][]
-
-            //[][][][][][][][][][][][][][][][][][][][][][]
-            //probably, when looping through above for mulitple products, should attempt to clear lists so as not to duplicate?
-            //example: p.AttributeName.Clear();
-
+            ////Add a Customer:
+           //Console.Write("Call Add Customer Code:");
+           // AddCustomer();
             //Excel code:
 
             //Excel.Application app = new Excel.Application();
@@ -121,6 +57,128 @@ namespace ConsoleTester
 
         }
 
-       
+        public static void AddProduct()
+        {
+         //   //[][][][][CPQ ADD A PRODUCT][][][][]
+         //   //Credentials Information
+            Credentials c = new Credentials();
+
+          //  //Test Credentials for instance:
+            Console.WriteLine(string.Format("Logging in as {0}", c.Login));
+            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
+
+          //  //Create Product:
+            Product p = new Product();
+
+          //  //[][][][][DEFINE PRODUCT NAME(REQUIRED!)][][][][]
+            p.ProductName = new ProductList();
+            p.ProductName.Add(new Translations("AndyProductAPITest1"));
+
+          //  //[][][][][DEFINE PRODUCT CATEGORY(REQUIRED!)][][][][]
+            p.Categories = new CategoryList();
+            p.Categories.Add(new Translations("Software Devices"));
+
+          //  //[][][][][DEFINE PRODUCT TYPE(REQUIRED!)][][][][]
+            p.ProductType = "Software";
+
+           // //[][][][][DEFINE PRODUCT DISPLAY TYPE][][][][]
+           // //(defaults to Simple product if node not included, recommend not to include in general, 
+           // //only include when not wanting a simple product, otherwise just comment out)
+            p.DisplayType = "Configurable";
+            //p.DisplayType = ProductDisplayType.Configurable; 
+
+            ////[][][][][DEFINE ACTIVE STATE][][][][]
+            ////define Active State (not required), defaults to true if missing;
+            p.Active = true;
+
+           // //[][][][][ATTRIBUTES][][][][]
+           // //define Attribute names
+            p.AttributeName = new AttributeList();
+            p.AttributeName.Add(new Translations("Attribute1"));
+            ////define Attribute values
+            p.AttributeValue = new AttributeValueList();
+            p.AttributeValue.Add(new Translations("500"));
+
+            Console.WriteLine("----------");
+
+            //show XML generated from above, that will be pushed to CPQ for adding products:
+            Console.WriteLine("Inner XML: " + p.CreateXml().InnerXml);
+
+            ////Attempt to Push the product and any defined variables for that product:
+            //Push.Product(p, c); //comment this out when not wanting to push products
+            //Console.WriteLine("Tried to push product");
+
+            ////probably, when looping through above for mulitple products, should attempt to clear lists so as not to duplicate?
+            ////example: p.AttributeName.Clear();
+        }
+
+        public static void AddCustomer()
+        {
+
+            //  < Customers >
+            //    < Customer >
+            //      < Id > 23 </ Id >
+            //      < ExternalId ></ ExternalId >
+            //      < Active > 0 </ Active >
+            //      < FirstName > Harry </ FirstName >
+            //      < LastName > Bruce </ LastName >
+            //      < CustomerType ></ CustomerType >
+            //      < Company > Procter & amp; Gamble Company, The</Company>
+            //      <Address1>Procter &amp; Gamble Plaza</Address1>
+            //      <Address2></Address2>
+            //      <City>Cincinnati</City>
+            //      <Province></Province>
+            //      <StateAbbrev>OH</StateAbbrev>
+            //      <ZipCode>45402</ZipCode>
+            //      <CountryAbbrev>US</CountryAbbrev>
+            //      <TerritoryName></TerritoryName>
+            //      <BusinessPhone>(513) 698-6421</BusinessPhone>
+            //      <BusinessFax>(513) 983-4381</BusinessFax>
+            //      <EMail></EMail>
+            //      <OwnerID>234</OwnerID>
+            //      <OwnerUserName>MitchB</OwnerUserName>
+            //      <CRMAccountId>0036000000Kq8eU</CRMAccountId>
+            //      <CRMContactId>0016000000F0qvQ</CRMContactId>
+            //      <CustomFields>
+            //	<CustomField>
+            //	   <Name>CustomCode</Name>
+            //	   <Value>AAA111</Value>
+            //	</CustomField>
+            //      </CustomFields>
+            //    </Customer>
+
+            //   //Credentials Information
+            Credentials c = new Credentials();
+
+            //  //Test Credentials for instance:
+            Console.WriteLine(string.Format("Logging in as {0}", c.Login));
+            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe2() ? "Successful" : "Unsuccessful"));
+
+            Customer cust = new Customer();
+
+            cust.FirstName = "Jimmy";
+            cust.LastName = "CrackCorn";
+            cust.Company = "Customer Co";
+            cust.Address1 = "123 First Street";
+            cust.City = "Eureka";
+
+            Console.WriteLine("Inner XML: " + cust.CreateXml().InnerXml);
+
+            ////Attempt to Push the Customer and any defined variables for that Customer:
+            //Push.Customer(cust, c);  //currently, returns incorrect login, unsure why...
+            Console.WriteLine("Tried to push customer");
+
+            ////probably, when looping through above for mulitple customers, should attempt to clear lists so as not to duplicate?
+            ////example: cust.AttributeName.Clear();
+
+        }
+
+        public static void AddUser()
+        {
+
+
+
+        }
+
     }
 }

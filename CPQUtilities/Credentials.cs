@@ -18,6 +18,8 @@ namespace CPQUtilities
 
         public bool DoYouSeeMe()
         {
+
+            //for use with WsSrv Web Reference
             bool retVal = false;
 
             WsSrv.WsSrv service = new WsSrv.WsSrv();
@@ -31,6 +33,25 @@ namespace CPQUtilities
 
 
             return retVal;
+        }
+
+        public bool DoYouSeeMe2()
+        {
+
+            //for use with CPQApi Web Reference
+            bool retVal = false;
+
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+
+            string response = cpq_service.doUSeeMe(Login, Password);
+            XmlDocument xdoc = new XmlDocument();
+            Console.WriteLine(response);
+            xdoc.LoadXml(response);
+            retVal = xdoc.FirstChild.Name.Equals("ICANSEEYOU");
+
+            return retVal;
+
         }
 
         public Credentials()

@@ -58,6 +58,11 @@
     <Compile Include="Enums.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="Web References\CpqApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\WsSrv\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,12 +90,28 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>CPQUtilities_WsSrv_WsSrv</CachedSettingsPropName>
     </WebReferenceUrl>
+    <WebReferenceUrl Include="https://www.webcomcpq.com/wsAPI/CPQAPI.asmx%3fWSDL">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\CpqApi\</RelPath>
+      <UpdateFromURL>https://www.webcomcpq.com/wsAPI/CPQAPI.asmx%3fWSDL</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CPQUtilities_com_webcomcpq_www_CpqApi</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\CpqApi\CPQAPI.wsdl" />
+    <None Include="Web References\CpqApi\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\WsSrv\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

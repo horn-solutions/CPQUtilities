@@ -118,11 +118,14 @@ namespace CPQUtilities
 
     public class Customer
     {
-        public string SearchField { get; set; }              //        
+
+        //http://help.webcomcpq.com/doku.php?id=appendixd:customeradministrationwebmethod:customeradministrationdetails 
+
+        public string SearchField { get; set; }              //  not required;  attribute: Priority ="1"-if set to 1, fields listed in SearchFields nodes have priority over ID and externalID nodes during search      
         public string CustomFieldName { get; set; }              //       
-        public string ID { get; set; }                 // 
-        public string ExternalId { get; set; }             // 
-        public bool Active { get; set; }              // this will usually only be used when updating customer, but not likely in the initial implementation; if left out, then this node will default to True;
+        public string ID { get; set; }                 // not required
+        public string ExternalId { get; set; }             // not required
+        public bool Active { get; set; }              // this will usually only be used when updating customer, but not likely in the initial implementation; if left out, then this node will default to True; not required
         public string FirstName { get; set; }                  // 
         public string LastName { get; set; }          // 
         public string Company { get; set; }              // 
@@ -151,9 +154,73 @@ namespace CPQUtilities
 
         public XmlDocument CreateXml()
         {
+
+            //  < Customers >
+            //    < Customer >
+            //      < Id > 23 </ Id >
+            //      < ExternalId ></ ExternalId >
+            //      < Active > 0 </ Active >
+            //      < FirstName > Harry </ FirstName >
+            //      < LastName > Bruce </ LastName >
+            //      < CustomerType ></ CustomerType >
+            //      < Company > Procter & amp; Gamble Company, The</Company>
+            //      <Address1>Procter &amp; Gamble Plaza</Address1>
+            //      <Address2></Address2>
+            //      <City>Cincinnati</City>
+            //      <Province></Province>
+            //      <StateAbbrev>OH</StateAbbrev>
+            //      <ZipCode>45402</ZipCode>
+            //      <CountryAbbrev>US</CountryAbbrev>
+            //      <TerritoryName></TerritoryName>
+            //      <BusinessPhone>(513) 698-6421</BusinessPhone>
+            //      <BusinessFax>(513) 983-4381</BusinessFax>
+            //      <EMail></EMail>
+            //      <OwnerID>234</OwnerID>
+            //      <OwnerUserName>MitchB</OwnerUserName>
+            //      <CRMAccountId>0036000000Kq8eU</CRMAccountId>
+            //      <CRMContactId>0016000000F0qvQ</CRMContactId>
+            //      <CustomFields>
+            //	<CustomField>
+            //	   <Name>CustomCode</Name>
+            //	   <Value>AAA111</Value>
+            //	</CustomField>
+            //      </CustomFields>
+            //    </Customer>
             XmlDocument retVal = new XmlDocument();
 
             //put in XML creation code here
+            XmlNode rootNode = retVal.CreateElement("Root");
+            retVal.AppendChild(rootNode);
+
+            XmlNode userCustomers = retVal.CreateElement("Customers");
+            rootNode.AppendChild(userCustomers);
+
+            XmlNode userCustomer = retVal.CreateElement("Customer");
+            userCustomers.AppendChild(userCustomer);
+
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Id", ID);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "ExternalId", ExternalId);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Active", Active);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "FirstName", FirstName);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "LastName", LastName);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "CustomerType", CustomerType);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Company", Company);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Address1", Address1);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Address2", Address2);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "City", City);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Province", Province);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "StateAbbrev", StateAbbrev);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "ZipCode", ZipCode);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "CountryAbbrev", CountryAbbrev);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "TerritoryName", TerritoryName);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "BusinessPhone", BusinessPhone);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "BusinessFax", BusinessFax);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "Email", EMail);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "OwnerID", OwnerID);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "OwnerUserName", OwnerUserName);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "CRMAccountId", CRMAccountId);
+            Utility.AddIfNotEmptyOrNull(userCustomer, "CRMContactId", CRMContactId);
+
 
             return retVal;
         }
