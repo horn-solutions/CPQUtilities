@@ -106,10 +106,31 @@ namespace CPQUtilities
             XmlDocument xDoc = customer.CreateXml();
 
             XmlNode response = cpq_service.CustomerAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
+           
            //XmlNode response = service.SimpleProductAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
             Console.WriteLine(response.InnerXml); ;
 
             return retVal;
+        }
+
+        public static User User(User user, Credentials credentials)
+        {
+
+            //push user
+            User retVal = user;
+            WsSrv.WsSrv service = new WsSrv.WsSrv();
+            service.Timeout = 200 * 1000;
+
+            XmlDocument xDoc = user.CreateXml();
+
+            XmlNode response = service.UserAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
+
+            Console.WriteLine(response.InnerXml);
+
+
+            return retVal;
+        
+
         }
 
         //public static void adduser(string apiusername, string apipassword, string endusername, string enduserpassword, string endusertype, string endusercompanycode)
