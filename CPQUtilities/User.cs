@@ -122,9 +122,9 @@ namespace CPQUtilities
             return retVal;
         }
 
-        public static Product LoadFromXML(XmlDocument xdoc)
+        public static User LoadFromXML(XmlDocument xdoc)
         {
-            Product retVal = new Product();
+            User retVal = new User();
 
             // read the xml into fields
 

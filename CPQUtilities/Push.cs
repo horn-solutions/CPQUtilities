@@ -18,8 +18,6 @@ namespace CPQUtilities
 
             //complete list of WsSrv operations: https://www.webcomcpq.com/wsAPI/wssrv.asmx
 
-
-
             WsSrv.WsSrv service = new WsSrv.WsSrv();
             //wait 200 seconds:
             service.Timeout = 200 * 1000;
@@ -46,14 +44,10 @@ namespace CPQUtilities
 
             XmlDocument xDoc = product.CreateXml();
             
-
             XmlNode response = service.SimpleProductAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
             Console.WriteLine(response.InnerXml); ;
 
-
-
             return retVal;
-
 
         }
 
@@ -133,24 +127,6 @@ namespace CPQUtilities
 
         }
 
-        //public static void adduser(string apiusername, string apipassword, string endusername, string enduserpassword, string endusertype, string endusercompanycode)
-        //{
-        //    adds a user to the database
-        //    variable definitons:
-        //    api* are variables for dev use; ie, apiusername = andy's dev login, etc. 
-        //    enduser * refers to end user variables
-        //    note: per api:
-        //    endusercompanycode = code of the company user belongs to(usually is the sap number) company must exist(be pre - configured by sap cpq administrator)
-        //    endusertype = group user belongs to(must be pre - configured by sap cpq administrator)
-
-        //    wssrv.wssrv service = new wssrv.wssrv();
-        //    wait 200 seconds:
-        //    service.timeout = 200 * 1000;
-
-        //    xmldocument xdoc = new xmldocument();
-        //    xdoc.loadxml(string.format(@"
-        //    <userproperties> <username>{0}
-        //    "));
-        //}
+       
     }
 }
