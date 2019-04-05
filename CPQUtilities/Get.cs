@@ -25,5 +25,20 @@ namespace CPQUtilities
 
             return retVal;
         }
+
+        public static String GetQuoteData(Credentials credentials, string cartCompositeNumber, int? revNumber)
+        {
+
+            //returns general quote data (including main/line items), actions, key attributes, product types, promo codes, additional discounts, markets, shippings, customer data and customer fields
+
+            string retVal = "";
+
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+            retVal = cpq_service.GetQuoteData(credentials.Login, credentials.Password, cartCompositeNumber, revNumber);
+
+
+            return retVal;
+        }
     }
 }
