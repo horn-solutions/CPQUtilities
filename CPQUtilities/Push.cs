@@ -99,16 +99,46 @@ namespace CPQUtilities
 
             XmlDocument xDoc = customer.CreateXml();
 
-            XmlNode response = cpq_service.CustomerAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
-           
+            XmlNode response = cpq_service.CustomerAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);           
            //XmlNode response = service.SimpleProductAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
             Console.WriteLine(response.InnerXml); ;
-
             return retVal;
         }
 
         public static User User(User user, Credentials credentials)
         {
+
+            /*
+        <USERPROPERTIES>
+            <USERNAME>ksmith</USERNAME>
+            <PASSWORD AllowSameAsExisting="1">xdF5460Bf</PASSWORD>
+            <TITLE>Mr.</TITLE>
+            <FIRSTNAME>Kyle</FIRSTNAME>
+            <LASTNAME>Smith</LASTNAME>
+            <TYPE>Sales</TYPE>
+            <EMAILADDRESS>ksmith@mycompany.com</EMAILADDRESS>
+            <ADDRESS1>Summer Street</ADDRESS1>
+            <ADDRESS2 />
+            <ADMINISTRATOR>TRUE</ADMINISTRATOR>
+            <CITY>New Berlin</CITY>
+            <STATE>WI</STATE>
+            <ZIPCODE>53151</ZIPCODE>
+            <COUNTRY>United States</COUNTRY>
+            <PHONENUMBER>262-785-8320</PHONENUMBER>
+            <FAXNUMBER />
+            <COMPANYCODE>Callidus</COMPANYCODE>
+            <MUSTCHANGEPASSWORD>0</MUSTCHANGEPASSWORD>
+            <PASSWORDLOCKED>0</PASSWORDLOCKED>
+            <DEFAULTDICTIONARY></DEFAULTDICTIONARY>
+            <ORDERINGPARENT>jsmith</ORDERINGPARENT>
+            <MANAGINGPARENT>msmith</MANAGINGPARENT>
+            <APPROVINGPARENT>msmith</APPROVINGPARENT>
+            <CrmUserId>CALLIDUS/CLESAR@CALLIDUS.COM</CrmUserId>
+            <CrmName>CALLIDUS/CLESAR@CALLIDUS.COM</CrmName>
+            <CrmUserName></CrmUserName>
+            <CrmPassword>crm_123zfgTlm</CrmPassword>
+        </USERPROPERTIES>
+      */
 
             //push user
             User retVal = user;
@@ -116,11 +146,8 @@ namespace CPQUtilities
             service.Timeout = 200 * 1000;
 
             XmlDocument xDoc = user.CreateXml();
-
             XmlNode response = service.UserAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
-
             Console.WriteLine(response.InnerXml);
-
 
             return retVal;
         
@@ -148,14 +175,11 @@ namespace CPQUtilities
 
             //push Company
             Company retVal = company;
-
             WsSrv.WsSrv service = new WsSrv.WsSrv();
             service.Timeout = 200 * 1000;
             XmlDocument xDoc = company.CreateXml();
             XmlNode response = service.CompanyAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
             Console.WriteLine(response.InnerXml);
-
-
 
             return retVal;
         }

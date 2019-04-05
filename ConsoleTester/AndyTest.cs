@@ -27,8 +27,8 @@ namespace ConsoleTester
             //AddUser();
 
             ////Add a Company:
-            Console.WriteLine("Call Add Company Code:");
-            AddCompany();
+            //Console.WriteLine("Call Add Company Code:");
+            //AddCompany();
 
 
             //Excel code:
