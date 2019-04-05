@@ -29,7 +29,8 @@ namespace CPQUtilities
         public static String GetQuoteData(Credentials credentials, string cartCompositeNumber, int? revNumber)
         {
 
-            //returns general quote data (including main/line items), actions, key attributes, product types, promo codes, additional discounts, markets, shippings, customer data and customer fields
+            //returns general quote data (including main/line items), actions, key attributes, product types, 
+            //promo codes, additional discounts, markets, shippings, customer data and customer fields
 
             string retVal = "";
 
