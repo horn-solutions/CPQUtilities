@@ -127,6 +127,39 @@ namespace CPQUtilities
 
         }
 
+        public static Company Company(Company company, Credentials credentials)
+        {
+
+            //<COMPANYPROPERTIES>
+            //  <COMPANYCODE>WBI</COMPANYCODE >
+            //  <NAME>Webcom, Inc</NAME>
+            //  <EMAILADDRESS>webmaster @webcominc.com</EMAILADDRESS>
+            //  <ADDRESS1>611 N Broadway</ADDRESS1>
+            //  <ADDRESS2 />
+            //  <CITY>Milwaukee</CITY>
+            //  <STATE>WI</STATE>
+            //  <ZIPCODE>53202</ZIPCODE>
+            //  <COUNTRY>United States</COUNTRY>
+            //  <PHONENUMBER>414-273-4442</PHONENUMBER>
+            //  <FAXNUMBER> 414-298-9248 </FAXNUMBER>
+            //  <IMAGE>Webcomlogo.gif</IMAGE>
+            //</COMPANYPROPERTIES>
+
+
+            //push Company
+            Company retVal = company;
+
+            WsSrv.WsSrv service = new WsSrv.WsSrv();
+            service.Timeout = 200 * 1000;
+            XmlDocument xDoc = company.CreateXml();
+            XmlNode response = service.CompanyAdministration(credentials.Login, credentials.Password, "ADDORUPDATE", xDoc);
+            Console.WriteLine(response.InnerXml);
+
+
+
+            return retVal;
+        }
+
        
     }
 }

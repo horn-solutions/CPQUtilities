@@ -26,6 +26,10 @@ namespace ConsoleTester
             //Console.Write("Call Add User Code:");
             //AddUser();
 
+            ////Add a Company:
+            Console.WriteLine("Call Add Company Code:");
+            AddCompany();
+
 
             //Excel code:
 
@@ -194,7 +198,10 @@ namespace ConsoleTester
 
             Console.WriteLine(u.CreateXml().InnerXml);
 
-            
+           // Push.User(u, c);
+           // Console.WriteLine("Tried to push user");
+
+
 
 
         }
@@ -209,6 +216,52 @@ namespace ConsoleTester
             Console.WriteLine(Get.Catalogue(c));
 
             
+        }
+
+        public static void AddCompany()
+        {
+
+            //<COMPANYPROPERTIES>
+            //  <COMPANYCODE>WBI</COMPANYCODE >
+            //  <NAME>Webcom, Inc</NAME>
+            //  <EMAILADDRESS>webmaster @webcominc.com</EMAILADDRESS>
+            //  <ADDRESS1>611 N Broadway</ADDRESS1>
+            //  <ADDRESS2 />
+            //  <CITY>Milwaukee</CITY>
+            //  <STATE>WI</STATE>
+            //  <ZIPCODE>53202</ZIPCODE>
+            //  <COUNTRY>United States</COUNTRY>
+            //  <PHONENUMBER>414-273-4442</PHONENUMBER>
+            //  <FAXNUMBER> 414-298-9248 </FAXNUMBER>
+            //  <IMAGE>Webcomlogo.gif</IMAGE>
+            //</COMPANYPROPERTIES>
+
+
+            //add a company
+            Credentials c = new Credentials();
+            Console.Write(string.Format("Logging in as {0}", c.Login));
+            Console.WriteLine(string.Format(" ... Login {0}", c.DoYouSeeMe() ? "Successful" : "Unsuccessful"));
+
+            Console.WriteLine("----------");
+            Company company = new Company();
+
+            company.CompanyCode = "TestComp";
+            company.Name = "TestCompany";
+            company.Address1 = "123 N Test Street";
+            company.City = "Test City";
+            company.State = "TX";
+
+
+            //show XML generated from above, that will be pushed to CPQ for adding company:
+            Console.WriteLine("Inner XML: " + company.CreateXml().InnerXml);
+
+            ////Attempt to Push the company and any defined variables for that company:
+            //Push.Company(company, c); //comment this out when not wanting to push company
+            //Console.WriteLine("Tried to push company");
+
+            ////probably, when looping through above for mulitple companies, should attempt to clear lists so as not to duplicate?
+            ////example: p.AttributeName.Clear();
+
         }
 
     }
