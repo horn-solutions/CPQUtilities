@@ -85,6 +85,9 @@ namespace CPQUtilities
             //< CatalogueCode > A2223C </ CatalogueCode >
             //</ CatalogueCodes >
 
+
+            //http://help.webcomcpq.com/doku.php?id=appendixd:validatecataloguecodeswebmethod:validatecataloguecodeswebmethod
+
             //Function description: ValidateCatalogueCodes function executes reverse search on supplied part numbers.
             //    Result of this function is validity status for each supplied catalogue code.
             //    If code is valid, result will also contain product name and item list price.
@@ -97,7 +100,7 @@ namespace CPQUtilities
 
 
 
-           string retVal = "";
+            string retVal = "";
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
             XmlDocument xDoc = catalogueCodes.CreateXml();
