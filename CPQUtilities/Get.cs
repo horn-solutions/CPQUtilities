@@ -14,6 +14,9 @@ namespace CPQUtilities
 
         public static String Catalogue(Credentials credentials)
         {
+
+            //http://help.webcomcpq.com/doku.php?id=appendixd:get_catalogue:result_xml_examples
+
             //returns the XML of the entire Catalogue.
             //note, this can quickly exceed the limits of XML, and may not be the best method to get all items. A better way is likely to just export Products using the 
             //CPQ native interface.
@@ -28,6 +31,7 @@ namespace CPQUtilities
 
         public static String GetQuoteData(Credentials credentials, string cartCompositeNumber, int? revNumber)
         {
+            //http://help.webcomcpq.com/doku.php?id=appendixd:get_quote_data:get_quote_data
 
             //returns general quote data (including main/line items), actions, key attributes, product types, promo codes, additional discounts, markets, shippings, customer data and customer fields
 
@@ -41,7 +45,7 @@ namespace CPQUtilities
             return retVal;
         }
 
-        public static String SearchQuotes(Credentials credentials, String SearchCriteriaXML)
+        public static String SearchQuotes(Credentials credentials, String SearchCriteria)
         {
             string retVal = "";
 
@@ -64,7 +68,7 @@ namespace CPQUtilities
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
 
-            retVal = cpq_service.SearchQuotes(credentials.Login, credentials.Password, SearchCriteriaXML);
+            retVal = cpq_service.SearchQuotes(credentials.Login, credentials.Password, SearchCriteria);
 
             return retVal;
 
