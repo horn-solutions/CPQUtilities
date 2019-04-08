@@ -74,5 +74,41 @@ namespace CPQUtilities
 
 
         }
+
+        public static String ValidateCatalogueCodes(Credentials credentials, ValidateCatalogueCodes catalogueCodes)
+        {
+            //http://help.webcomcpq.com/doku.php?id=appendixd:validatecataloguecodeswebmethod:validatecataloguecodeswebmethod
+
+            //  <CatalogueCodes>
+            //< CatalogueCode > A2223A </ CatalogueCode >
+            //< CatalogueCode > A2223B </ CatalogueCode >
+            //< CatalogueCode > A2223C </ CatalogueCode >
+            //</ CatalogueCodes >
+
+            //Function description: ValidateCatalogueCodes function executes reverse search on supplied part numbers.
+            //    Result of this function is validity status for each supplied catalogue code.
+            //    If code is valid, result will also contain product name and item list price.
+
+
+            //API parameters username / password identifies the API user
+
+            //Maximum number of Catalogue codes per one call is limited to 5 in order to obtain optimal function and system resources 
+            //usability.
+
+
+
+           string retVal = "";
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+            XmlDocument xDoc = catalogueCodes.CreateXml();
+
+
+            XmlNode response = cpq_service.ValidateCatalogueCodes(credentials.Login, credentials.Password, xDoc);
+            retVal = response.InnerXml;
+            Console.WriteLine("Validate Catalogue Codes response: " + retVal);
+
+            return retVal;
+
+        }
     }
 }
