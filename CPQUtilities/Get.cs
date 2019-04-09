@@ -114,5 +114,20 @@ namespace CPQUtilities
             return retVal;
 
         }
+
+        public static String GetCartActions (Credentials credentials, String OrderID)
+        {
+            //gets the available actions for given quote and for supplied username, based on quote's status. 
+            string retVal = "";
+
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+
+            XmlNode response = cpq_service.getActionList(credentials.Login, credentials.Password, OrderID);
+            retVal = response.InnerXml;
+            Console.WriteLine("Get Cart Actions response: " + retVal);
+
+            return retVal;
+        }
     }
 }
