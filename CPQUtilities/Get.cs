@@ -129,5 +129,18 @@ namespace CPQUtilities
 
             return retVal;
         }
+
+        public static String GetCartProperties (Credentials credentials, String QuotationNumber)
+        {
+            string retVal = "";
+
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+
+            XmlNode response = cpq_service.getCartProperties(credentials.Login, credentials.Password, QuotationNumber, null);
+            retVal = response.InnerXml;
+            Console.WriteLine("Get Cart Properties response " + retVal);
+            return retVal;
+        }
     }
 }
