@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ValidateCatalogueCodes.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="Customer.cs" />

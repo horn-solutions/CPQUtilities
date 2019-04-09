@@ -14,6 +14,9 @@ namespace CPQUtilities
 
         public static String Catalogue(Credentials credentials)
         {
+
+            //http://help.webcomcpq.com/doku.php?id=appendixd:get_catalogue:result_xml_examples
+
             //returns the XML of the entire Catalogue.
             //note, this can quickly exceed the limits of XML, and may not be the best method to get all items. A better way is likely to just export Products using the 
             //CPQ native interface.
@@ -28,6 +31,7 @@ namespace CPQUtilities
 
         public static String GetQuoteData(Credentials credentials, string cartCompositeNumber, int? revNumber)
         {
+            //http://help.webcomcpq.com/doku.php?id=appendixd:get_quote_data:get_quote_data
 
             //returns general quote data (including main/line items), actions, key attributes, product types, 
             //promo codes, additional discounts, markets, shippings, customer data and customer fields
@@ -42,7 +46,7 @@ namespace CPQUtilities
             return retVal;
         }
 
-        public static String SearchQuotes(Credentials credentials, String SearchCriteriaXML)
+        public static String SearchQuotes(Credentials credentials, String SearchCriteria)
         {
             string retVal = "";
 
@@ -65,10 +69,49 @@ namespace CPQUtilities
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
 
-            retVal = cpq_service.SearchQuotes(credentials.Login, credentials.Password, SearchCriteriaXML);
+            retVal = cpq_service.SearchQuotes(credentials.Login, credentials.Password, SearchCriteria);
 
             return retVal;
 
+
+        }
+
+        public static String ValidateCatalogueCodes(Credentials credentials, ValidateCatalogueCodes catalogueCodes)
+        {
+            //http://help.webcomcpq.com/doku.php?id=appendixd:validatecataloguecodeswebmethod:validatecataloguecodeswebmethod
+
+            //  <CatalogueCodes>
+            //< CatalogueCode > A2223A </ CatalogueCode >
+            //< CatalogueCode > A2223B </ CatalogueCode >
+            //< CatalogueCode > A2223C </ CatalogueCode >
+            //</ CatalogueCodes >
+
+
+            //http://help.webcomcpq.com/doku.php?id=appendixd:validatecataloguecodeswebmethod:validatecataloguecodeswebmethod
+
+            //Function description: ValidateCatalogueCodes function executes reverse search on supplied part numbers.
+            //    Result of this function is validity status for each supplied catalogue code.
+            //    If code is valid, result will also contain product name and item list price.
+
+
+            //API parameters username / password identifies the API user
+
+            //Maximum number of Catalogue codes per one call is limited to 5 in order to obtain optimal function and system resources 
+            //usability.
+
+
+
+            string retVal = "";
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+            XmlDocument xDoc = catalogueCodes.CreateXml();
+
+
+            XmlNode response = cpq_service.ValidateCatalogueCodes(credentials.Login, credentials.Password, xDoc);
+            retVal = response.InnerXml;
+            Console.WriteLine("Validate Catalogue Codes response: " + retVal);
+
+            return retVal;
 
         }
     }
