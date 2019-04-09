@@ -142,5 +142,23 @@ namespace CPQUtilities
             Console.WriteLine("Get Cart Properties response " + retVal);
             return retVal;
         }
+
+        public static String GetQuoteItemsAttributes (Credentials credentials, String CartCompositeNumber)
+        {
+            string retVal = "";
+
+            //returns attributes (all or specified ones) from desired quote
+            //Important note: in XML, Line Items are stored in <PRODUCT> nodes, just like Main Items. They are not present in <ATTRIBUTE> node. Also, for Line Items,
+            //following nodes are always empty: <ProductId>, <IsSimple>, <IsValid>, <DescriptionLong>
+
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            cpq_service.Timeout = 200 * 1000;
+            bool GetAllAttributes = true;
+            string response = cpq_service.GetQuoteItemsAttributes(credentials.Login, credentials.Password, CartCompositeNumber, null, null, GetAllAttributes);
+            retVal = response;
+            Console.WriteLine("Get Quote Items Attributes response " + response);
+
+            return retVal;
+        }
     }
 }
