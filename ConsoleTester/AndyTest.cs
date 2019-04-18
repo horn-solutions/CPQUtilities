@@ -261,6 +261,7 @@ namespace ConsoleTester
 
             ////probably, when looping through above for mulitple companies, should attempt to clear lists so as not to duplicate?
             ////example: p.AttributeName.Clear();
+            
 
         }
 

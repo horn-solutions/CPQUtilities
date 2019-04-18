@@ -342,59 +342,59 @@ namespace CPQUtilities
 
                 if (AttributeValue != null)
                     AttributeValue.AddToXML(userProductAttributeValues);
-                
+
+
+
+
+
+                //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
+                //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
+                ////Attribute Child nodes, still WIP:////
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "Type", AttributeType);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "DisplayType", AttributeDisplayType);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "MeasurementType", AttributeMeasurementType);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "Rank", AttributeRank);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItem", AttributeLineItem);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItemDescription", AttributeLineItemDescription);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "RankWithinCart", AttributeRankWithinCart);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "SpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "Required", AttributeRequired);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "Label", AttributeLabel);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "Hint", AttributeHint);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowOneTimePrice", AttributeShowOneTimePrice);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowRecurringPrice", AttributeShowRecurringPrice);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonText", AttributeButtonText);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "AttachScriptButton", AttributeAttachScriptButton);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ValuesPreselected", AttributeValuesPreselected);
+
+                //Buttons is child of Attributes; 
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptsAttached", AttributeButtonScriptsAttached);
+
+                ////ButtonScriptsAttached Child Nodes, still WIP:////
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScript", AttributeButtonScript);
+                Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
 
             }
-
-
-            //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
-            //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
-            ////Attribute Child nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Type", AttributeType);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "DisplayType", AttributeDisplayType);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "MeasurementType", AttributeMeasurementType);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Rank", AttributeRank);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItem", AttributeLineItem);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "LineItemDescription", AttributeLineItemDescription);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "RankWithinCart", AttributeRankWithinCart);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "SpansAcrossEntireRow", AttributeSpansAcrossEntireRow);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Required", AttributeRequired);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Label", AttributeLabel);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "Hint", AttributeHint);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowOneTimePrice", AttributeShowOneTimePrice);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ShowRecurringPrice", AttributeShowRecurringPrice);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonText", AttributeButtonText);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "AttachScriptButton", AttributeAttachScriptButton);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ValuesPreselected", AttributeValuesPreselected);
-
-            //Buttons is child of Attributes; 
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptsAttached", AttributeButtonScriptsAttached);
-
-            ////ButtonScriptsAttached Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScript", AttributeButtonScript);
-            //Utility.AddIfNotEmptyOrNull(userProductAttributes, "ButtonScriptAttachedRank", ButtonScriptAttachedRank);
-
-
             //tabs node is not allowed with Simple products;
             //Utility.AddIfNotEmptyOrNull(userProduct, "Tabs", Tabs);
             ////Tabs Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsSystemId", TabsSystemId);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsName", TabsName);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsProductTabRank", TabsProductTabRank);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsLayoutTemplate", TabsLayoutTemplate);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityPermission", TabsVisibilityPermission);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityCondition", TabsVisibilityCondition);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsShowTabHeader", TabsShowTabHeader);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributes", TabsAttributes);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesName", TabsAttributesName);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesRank", TabsAttributesRank);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsSystemId", TabsSystemId);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsName", TabsName);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsProductTabRank", TabsProductTabRank);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsLayoutTemplate", TabsLayoutTemplate);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityPermission", TabsVisibilityPermission);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsVisibilityCondition", TabsVisibilityCondition);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsShowTabHeader", TabsShowTabHeader);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributes", TabsAttributes);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesName", TabsAttributesName);
+            Utility.AddIfNotEmptyOrNull(userProduct, "TabsAttributesRank", TabsAttributesRank);
 
             //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScripts", GlobalScripts);
             ////GlobalScripts Child Nodes, still WIP:////
-            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsName", GlobalScriptsName);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsRank", GlobalScriptsRank);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEvents", GlobalScriptsEvents);
-            //Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
+            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsName", GlobalScriptsName);
+            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsRank", GlobalScriptsRank);
+            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEvents", GlobalScriptsEvents);
+            Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
 
             return retVal;
 
