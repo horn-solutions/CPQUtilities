@@ -258,42 +258,42 @@ namespace CPQUtilities
             else if (errorCode.Equals("API_NewQuote_InvalidScparamDateFormat"))
                 retVal = "Cart property value not applicable";
             //Users Administrations API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("103002"))
+                retVal = "Approving parent user not found in CPQ database";
+            else if (errorCode.Equals("103003"))
+                retVal = "Ordering parent user not found in CPQ database";
+            else if (errorCode.Equals("103004"))
+                retVal = "Managing parent user not found in CPQ database";
+            else if (errorCode.Equals("103005"))
+                retVal = "Password cannot be blank";
+            else if (errorCode.Equals("103006"))
+                retVal = "First name cannot be blank";
+            else if (errorCode.Equals("103007"))
+                retVal = "User type cannot be blank";
+            else if (errorCode.Equals("103008"))
+                retVal = "Supplied user type is unknown in CPQ";
+            else if (errorCode.Equals("103009"))
+                retVal = "User's country cannot be blank";
+            else if (errorCode.Equals("103010"))
+                retVal = "Company code not found in CPQ";
+            else if (errorCode.Equals("103011"))
+                retVal = "Company with company code {{companyCode}} does not exist, and cannot be updated";
+            else if (errorCode.Equals("103014"))
+                retVal = "User with username {{username}} does not exist, and cannot be updated";
+            else if (errorCode.Equals("103018"))
+                retVal = "Node {{nodeName}} is required";
+            else if (errorCode.Equals("103019"))
+                retVal = "Can not convert value of {{nodeName}} : {{innerText}} to boolean";
+            else if (errorCode.Equals("103020"))
+                retVal = "Country {{Country}} does not exist";
+            else if (errorCode.Equals("103021"))
+                retVal = "Brand for provided brand name not found";
+            else if (errorCode.Equals("103022"))
+                retVal = "Custom field not recognized";
+            else if (errorCode.Equals("103023"))
+                retVal = "User with username {{username}} already exists, and cannot be added";
+            else if (errorCode.Equals("103025"))
+                retVal = "Node {{nodeName}} has invalid attribute value";
             //Customers Administration API
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
