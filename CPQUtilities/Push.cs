@@ -154,6 +154,29 @@ namespace CPQUtilities
 
         }
 
+        public static LinkOpportunity LinkOpportunity(LinkOpportunity linkOpportunity, Credentials credentials, string orderId)
+        {
+
+
+
+            //< Crm >
+            //  < OpportunityId > 892ADE6756HIX </ OpportunityId >
+            //     < OpportunityName > Test Oppty </ OpportunityName >
+            //      </ Crm >
+            //push LinkOpportunity
+            LinkOpportunity retVal = linkOpportunity;
+            CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
+            //wait 200 seconds:
+            //service.Timeout = 200 * 1000;
+            cpq_service.Timeout = 200 * 1000;
+
+            XmlDocument xDoc = linkOpportunity.CreateXml();
+            XmlNode response = cpq_service.LinkOpportunity(credentials.Login, credentials.Password, orderId, xDoc);
+            Console.WriteLine(response.InnerXml);
+            return retVal;
+
+        }
+
         public static Company Company(Company company, Credentials credentials)
         {
 
