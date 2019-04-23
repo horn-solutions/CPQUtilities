@@ -362,96 +362,83 @@ namespace CPQUtilities
             else if (errorCode.Equals("108002"))
                 retVal = "Provided price is not valid";
             //Salesforce API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("SF_ParamMissing_SessionId"))
+                retVal = "Login Data is incorrect. Please contact your SalesForce administrator";
+            else if (errorCode.Equals("SF_ParamMissing_Url"))
+                retVal = "Login Data is incorrect. Please contact your SalesForce administrator";
+            else if (errorCode.Equals("SF_ParamMissing_Pass"))
+                retVal = "Login Data is incorrect. Please contact your SalesForce administrator";
+            else if (errorCode.Equals("SF_ParamUncorrect_Pass"))
+                retVal = "Login Data is incorrect. Please contact your SalesForce administrator";
+            else if (errorCode.Equals("SF_DomainUncorrect"))
+                retVal = "Domain that Salesforce provided does not exist in CPQ. Please contact your SalesForce administrator";
+            else if (errorCode.Equals("SF_NoCRMAdminAccount"))
+                retVal = "Administrative Salesforce account is not set up. Please contact your CPQ administrator";
+            else if (errorCode.Equals("SF_LoginUnsuccessfulWithCRMAdminAccount"))
+                retVal = "Logging into Salesforce with administrative Salesforce account failed. Please contact your CPQ administrator";
+            else if (errorCode.Equals("SF_LoginUnsuccessfulWithProvidedSessionIdAndUrl"))
+                retVal = "Logging into Salesforce with provided parameters failed. Please contact your CPQ or Salesforce administrator";
+            else if (errorCode.Equals("SF_ErrorInQuery"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorInRetrieve"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorInDescribe"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorMalFormedQuery"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorMalFormedRetrieve"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorQueryIdDoesNotExist"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ErrorQueryIsNotValid"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotQueriable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotRetrievable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotCreatable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotUpdatable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotDeletable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_CrUpdOpp_RoleMissingForOppAccount"))
+                retVal = "Opportunity cannot be created because the customer role that is used for creating Opportunity Account is emptyd";
+            else if (errorCode.Equals("SF_CrUpdOpp_AccountIdNotProvided"))
+                retVal = "Opportunity cannot be created because the Account Id of the customer role that is used for creating Opportunity Account is empty";
+            else if (errorCode.Equals("SF_CrUpdOpp_StdPriceBookNotDefined"))
+                retVal = "Standard Price book is not defined in Salesforce. Please contact your Salesforce administrator";
+            else if (errorCode.Equals("SF_ObjectNotQueriable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_ObjectNotRetrievable"))
+                retVal = "There has been an error in query made to Salesforce";
+            else if (errorCode.Equals("SF_CrUpdOpp_OppNotCreated"))
+                retVal = "There was en error while creating new opportunity";
+            else if (errorCode.Equals("SF_CrUpdOpp_OppNotUpdated"))
+                retVal = "There was an error while updating opportunity";
+            else if (errorCode.Equals("SF_CrUpdOpp_CreatingOppLineItems"))
+                retVal = "There was an error while creating opportunity line items";
+            else if (errorCode.Equals("SF_CrUpdOpp_NoPartNumberForProduct"))
+                retVal = "Item # {{item_number}} was not added to the opportunity because it does not have part number";
+            else if (errorCode.Equals("SF_CustRoles_CreatingAccCont"))
+                retVal = "There was an error while creating/updating accounts and contacts in Salesforce from CPQ customer roles";
+            else if (errorCode.Equals("SF_CartNotLoaded"))
+                retVal = "Cart has not been loaded. Please select a cart";
+            else if (errorCode.Equals("SF_SalesForceNotSelected"))
+                retVal = "CPQ has not been set up to be integrated with Salesforce. Please contact your CPQ administrator";
+            else if (errorCode.Equals("SF_CreateSfQuote"))
+                retVal = "An error happened when attached quote informations were populated in Salesforce";
+            else if (errorCode.Equals("SF_NoCRMItemMappinsDefined"))
+                retVal = "There are no mappings defined for SF_Product2 and OpportunityLineItem in Admin ⇒ Setup⇒ CRM Integration Sutup ⇒ CRM Item Mappings";
+            else if (errorCode.Equals("SF_NoIdentifingCRMItemMappingDefined"))
+                retVal = "None of mappings defined in Admin ⇒ Setup⇒ CRM Integration Sutup ⇒ CRM Item Mappings has value true in the Identifing Product column";
+            else if (errorCode.Equals("SF_FieldTooLong"))
+                retVal = "Filed size of a field: {{fieldName}} is too long";
+            else if (errorCode.Equals("SF_UnableToCastField"))
+                retVal = "Field : {{fieldName}} can not be converted to number";
+            else if (errorCode.Equals("LX_LoadingConfiguration"))
+                retVal = "Error loading configuration";
+            
             //Cross Reference
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
