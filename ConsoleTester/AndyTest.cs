@@ -29,7 +29,7 @@ namespace ConsoleTester
             ////Add a Company:
             //Console.WriteLine("Call Add Company Code:");
             //AddCompany();
-
+            Console.WriteLine(Get.GetAPIErrorDescription("100019"));
 
             //Excel code:
 

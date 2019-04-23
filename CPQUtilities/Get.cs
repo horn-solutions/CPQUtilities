@@ -175,7 +175,6 @@ namespace CPQUtilities
                 retVal = "Unexpected exception";
             else if (errorCode.Equals("101001"))
                 retVal = "Invalid login username/password supplied";
-
             //New Quote API
             else if (errorCode.Equals("100011"))
                 retVal = "Invalid customer role supplied. Allowed range is from 1 to 3";
@@ -438,7 +437,6 @@ namespace CPQUtilities
                 retVal = "Field : {{fieldName}} can not be converted to number";
             else if (errorCode.Equals("LX_LoadingConfiguration"))
                 retVal = "Error loading configuration";
-            
             //Cross Reference
             else if (errorCode.Equals("CR_ProductNotFound"))
                 retVal = "The part number is {{param}} . Product that matches the part number you inserted could not be found";
