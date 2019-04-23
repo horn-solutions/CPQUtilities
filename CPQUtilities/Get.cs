@@ -295,51 +295,51 @@ namespace CPQUtilities
             else if (errorCode.Equals("103025"))
                 retVal = "Node {{nodeName}} has invalid attribute value";
             //Customers Administration API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("104003"))
+                retVal = "Customer delete failed";
+            else if (errorCode.Equals("104004"))
+                retVal = "Saving customer failed";
+            else if (errorCode.Equals("104005"))
+                retVal = "Found {{number}} cutomers";
+            else if (errorCode.Equals("104006"))
+                retVal = "Invalid territory name";
+            else if (errorCode.Equals("104007"))
+                retVal = "Invalid country or state";
+            else if (errorCode.Equals("104008"))
+                retVal = "Deserialization failed";
+            else if (errorCode.Equals("104009"))
+                retVal = "Unknown owner username";
+            else if (errorCode.Equals("104010"))
+                retVal = "Invalid OwnerID";
+            else if (errorCode.Equals("104011"))
+                retVal = "No Customers Provided";
+            else if (errorCode.Equals("104012"))
+                retVal = "Unknown action";
+            else if (errorCode.Equals("104013"))
+                retVal = "You shouldn't provide ID element when adding new cutomer";
+            else if (errorCode.Equals("104014"))
+                retVal = "Specified Custom Field doesn’t exist in the system";
             //Custom Table Administration API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("105001"))
+                retVal = "Invalid table name";
+            else if (errorCode.Equals("105002"))
+                retVal = "Invalid action";
+            else if (errorCode.Equals("105003"))
+                retVal = "column is necessery for this action";
+            else if (errorCode.Equals("105004"))
+                retVal = "Number of provided rows must be between 1 and defined limit";
+            else if (errorCode.Equals("105005"))
+                retVal = "Column missing or invalid column name";
+            else if (errorCode.Equals("105007"))
+                retVal = "column is not allowed for this action";
+            else if (errorCode.Equals("105009"))
+                retVal = "No entries found for provided SearchCriteria";
+            else if (errorCode.Equals("105010"))
+                retVal = "Missing column for update";
+            else if (errorCode.Equals("105012"))
+                retVal = "Colum names muste be unique";
+            else if (errorCode.Equals("105013"))
+                retVal = "Number of values doesn't match the number of columns provided";
             //Company Administration API
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
