@@ -67,5 +67,22 @@ namespace CPQUtilities
 
     }
 
+    public enum UPSShippingCodeType
+    {
+        //note: this may be outdated.
+        //API help from http://help.webcomcpq.com/doku.php?id=appendixd:externalwebservice:upsshipping references https://www.ups.com/ups.app/xml/Rate ,
+        //however https://www.ups.com/upsdeveloperkit?loc=en_US
+        US_Domestic,
+        US_Originating,
+        Puerto_Rico_Originating,
+        Canada_Originating,
+        Mexico_Originating,
+        Polish_Domestic,
+        European_Union,
+        Other_Originating,
+        Freight_Shipments
+
+    }
+
     
 }
