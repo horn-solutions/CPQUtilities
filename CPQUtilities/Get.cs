@@ -451,36 +451,36 @@ namespace CPQUtilities
             else if (errorCode.Equals("CR_AttrValueRefNotFound"))
                 retVal = "Reference for competition's attribute ' {{params1}} ' with attribute value ' {{params2}} ' could not be found";
             //Microsoft CRM
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("MSCRM_NoCrmUserMapped"))
+                retVal = "Cpq User does not have CRM user mapped and CRM admin account hasn't been set up";
+            else if (errorCode.Equals("MSCRM_LoginUnsuccessfulWithCRMUserAccount"))
+                retVal = "Logging into MSCRM with user's account failed";
+            else if (errorCode.Equals("MSCRM_LoginUnsuccessfulWithCRMAdminAccount"))
+                retVal = "Logging into MSCRM with admin's account failed";
+            else if (errorCode.Equals("MSCRM_NoDiscoveryServiceUrl"))
+                retVal = "Discovery Service Url hasn't been set up. Please contact your CPQ administrator";
+            else if (errorCode.Equals("MSCRM_DomainUncorrect"))
+                retVal = "Domain that MS CRM provided does not exist in CPQ. Please contact your MS CRM administrator";
+            else if (errorCode.Equals("MSCRM_MSCRMNotSelected"))
+                retVal = "CPQ has not been set up to be integrated with MS CRM. Please contact your CPQ administrator";
+            else if (errorCode.Equals("MSCRM_UserIdNotProvided"))
+                retVal = "MS CRM UserId was not provided. Please contact your MS CRM administrator";
+            else if (errorCode.Equals("MSCRM_CrUpdOpp_OppNotUpdated"))
+                retVal = "There was an error while updating opportunity";
+            else if (errorCode.Equals("MSCRM_CrUpdOpp_CreatingOppLineItems"))
+                retVal = "There was an error while creating opportunity line items";
+            else if (errorCode.Equals("MSCRM_CustRoles_CreatingAccCont"))
+                retVal = "There was en error while creating new opportunity";
+            else if (errorCode.Equals("MSCRM_CrUpdOpp_OppNotCreated"))
+                retVal = "There was en error while creating new opportunity";
+            else if (errorCode.Equals("MSCRM_CrUpdOpp_AccountIdNotProvided"))
+                retVal = "Opportunity cannot be created because the Account Id of the customer role that is used for creating Opportunity Account is empty";
+            else if (errorCode.Equals("MSCRM_CartNotLoaded"))
+                retVal = "Cart has not been loaded. Please select a cart";
+            else if (errorCode.Equals("MSCRM_CrUpdOpp_RoleMissingForOppAccount"))
+                retVal = "Opportunity cannot be created because the customer role that is used for creating Opportunity Account is empty";
+            else if (errorCode.Equals("MSCRM_OppDoesntHavePriceList"))
+                retVal = "Opportunity does not have price list set. In order to successfully create products in MS CRM, opportunity should have price list selected";
             //SAP CRM Api
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
