@@ -161,5 +161,352 @@ namespace CPQUtilities
 
             return retVal;
         }
+
+        public static String GetAPIErrorDescription (string API_Error_Code)
+        {
+
+            //based on http://help.webcomcpq.com/doku.php?id=appendixd:apierrorcodes
+
+            string retVal = "";
+            string errorCode = API_Error_Code;
+
+            //General API Error Codes:
+            if (errorCode.Equals("100000"))
+                retVal = "Unexpected exception";
+            else if (errorCode.Equals("101001"))
+                retVal = "Invalid login username/password supplied";
+
+            //New Quote API
+            else if (errorCode.Equals("100011"))
+                retVal = "Invalid customer role supplied. Allowed range is from 1 to 3";
+            else if (errorCode.Equals("100012"))
+                retVal = "Attribute 'CustomerRoleType' is required for node customer";
+            else if (errorCode.Equals("100013"))
+                retVal = "First name is either not existing or is empty string, but it is a required field";
+            else if (errorCode.Equals("100014"))
+                retVal = "Last name is either not existing or is empty string, but it is a required field";
+            else if (errorCode.Equals("100015"))
+                retVal = "Address1 is a required field, and it is either not supplied or is empty";
+            else if (errorCode.Equals("100016"))
+                retVal = "City is a required field, and it is either not supplied or empty";
+            else if (errorCode.Equals("100017"))
+                retVal = "StateAbbrev is a required field, and it is either not supplied or empty";
+            else if (errorCode.Equals("100018"))
+                retVal = "Zip code is a required field, and You either did not supply it or left it empty";
+            else if (errorCode.Equals("100019"))
+                retVal = "CounrtyAbbrev is a required field and You either didn't supply it or left it empty";
+            else if (errorCode.Equals("100020"))
+                retVal = "EMail field is not supplied, or is supplied empty, and it is required";
+            else if (errorCode.Equals("100022"))
+                retVal = "Supplied owner username not found in CPQ database";
+            else if (errorCode.Equals("100023"))
+                retVal = "Invalid Market";
+            else if (errorCode.Equals("100024"))
+                retVal = "A minimum of {{requiredNumberOfCustomers}} customers needs to be supplied";
+            else if (errorCode.Equals("100025"))
+                retVal = "Supplied State AbbrevParameter Is Invalid";
+            else if (errorCode.Equals("100026"))
+                retVal = "Supplied CountryAbbrev parameter is invalid";
+            else if (errorCode.Equals("100027"))
+                retVal = "Supplied TerritoryName parameter is invalid";
+            else if (errorCode.Equals("100028"))
+                retVal = "Supplied email address is invalid";
+            else if (errorCode.Equals("100029"))
+                retVal = "Quote must have at least one item";
+            else if (errorCode.Equals("100030"))
+                retVal = "The item with catalogue code {{mi.PartNumber.Value}} does not exit";
+            else if (errorCode.Equals("100031"))
+                retVal = "Promo code {{apiCart.PromoCodes[0].CodeValue.Value}} is not a valid PromoCode";
+            else if (errorCode.Equals("100032"))
+                retVal = "Internal error";
+            else if (errorCode.Equals("100043"))
+                retVal = "You supplied an invalid string for customer ID";
+            else if (errorCode.Equals("100044"))
+                retVal = "Customer with supplied ID is not available";
+            else if (errorCode.Equals("100045"))
+                retVal = "Attribute name node is either not supplied or left blank";
+            else if (errorCode.Equals("100046"))
+                retVal = "At least one attribute value is required";
+            else if (errorCode.Equals("100047"))
+                retVal = "The name You supplied is not valid for the item";
+            else if (errorCode.Equals("100048"))
+                retVal = "You supplied an invalid value for attribute";
+            else if (errorCode.Equals("100049"))
+                retVal = "Customer with supplied External ID is not availabled";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100051"))
+                retVal = "Mappings failed while downloading data from CRM";
+            else if (errorCode.Equals("100053"))
+                retVal = "Supplied quantity parameter must be greater than zero";
+            else if (errorCode.Equals("100055"))
+                retVal = "Cart property value not applicable";
+            else if (errorCode.Equals("100056"))
+                retVal = "You cannot create quotes with incomplete configurations";
+            else if (errorCode.Equals("100057"))
+                retVal = "Mappings failed while uploading data to CRM";
+            else if (errorCode.Equals("API_NewQuote_ParameterMissing"))
+                retVal = "All parameters not sent";
+            else if (errorCode.Equals("API_NewQuote_UserNotMappedInCPQ"))
+                retVal = "USER NOT MAPPED IN CPQ";
+            else if (errorCode.Equals("API_NewQuote_ProductIsObsolete"))
+                retVal = "You cannot add to quote the obsolete product";
+            else if (errorCode.Equals("API_NewQuote_InvalidScparamDateFormat"))
+                retVal = "Cart property value not applicable";
+            //Users Administrations API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Customers Administration API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Custom Table Administration API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Company Administration API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Create New Quote And Get Quote Data API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //PriceBook Administration Through Custom Table API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Salesforce API
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Cross Reference
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Microsoft CRM
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //SAP CRM Api
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("100050"))
+                retVal = "OpportunityId node is required";
+            //Not Found
+            else
+                retVal = "Unrecognized Error Code, please double check and try again";
+
+
+            return retVal;
+        }
     }
 }
