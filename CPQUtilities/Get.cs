@@ -440,16 +440,16 @@ namespace CPQUtilities
                 retVal = "Error loading configuration";
             
             //Cross Reference
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("CR_ProductNotFound"))
+                retVal = "The part number is {{param}} . Product that matches the part number you inserted could not be found";
+            else if (errorCode.Equals("CR_ProductFoundNoCrossRef"))
+                retVal = "Competition product ' {{param}} ' matches the code you inserted , but it is not referenced to any home product";
+            else if (errorCode.Equals("CR_ProductFoundNoConditition"))
+                retVal = "Competition product ' {{param}} ' matches the code you inserted , but it can not be referenced to any home product because a condition is not met";
+            else if (errorCode.Equals("CR_ProductFoundHeaderMessage"))
+                retVal = "For the part number ' {{param1}} ' , ' {{param2}} ' , reference is made to home product ' {{param3}} '";
+            else if (errorCode.Equals("CR_AttrValueRefNotFound"))
+                retVal = "Reference for competition's attribute ' {{params1}} ' with attribute value ' {{params2}} ' could not be found";
             //Microsoft CRM
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
