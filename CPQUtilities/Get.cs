@@ -341,26 +341,26 @@ namespace CPQUtilities
             else if (errorCode.Equals("105013"))
                 retVal = "Number of values doesn't match the number of columns provided";
             //Company Administration API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("106001"))
+                retVal = "Company name is a required field";
+            else if (errorCode.Equals("106002"))
+                retVal = "Required node COMPANYCODE not supplied";
+            else if (errorCode.Equals("106003"))
+                retVal = "Node value {{nodeValue}} is too big. Max size is {{maxSize}}";
+            else if (errorCode.Equals("106004"))
+                retVal = "Node value {{nodeValue}} is not in the right format";
+            else if (errorCode.Equals("106005"))
+                retVal = "  .";
             //Create New Quote And Get Quote Data API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("107001"))
+                retVal = "ProductName is a required parameter";
+            else if (errorCode.Equals("107002"))
+                retVal = "Invalid ProductName";
             //PriceBook Administration Through Custom Table API
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("108001"))
+                retVal = "Provided date is not valid";
+            else if (errorCode.Equals("108002"))
+                retVal = "Provided price is not valid";
             //Salesforce API
             else if (errorCode.Equals("100050"))
                 retVal = "OpportunityId node is required";
