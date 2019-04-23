@@ -490,7 +490,7 @@ namespace CPQUtilities
                 retVal = "CPQ has not been set up to be integrated with SAP CRM. Please contact your CPQ administrator";
             //Not Found
             else
-                retVal = "Unrecognized Error Code, please double check and try again";
+                retVal = "CPQUtilError: Unrecognized Error Code, please double check and try again";
 
 
             return retVal;
