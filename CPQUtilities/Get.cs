@@ -482,12 +482,12 @@ namespace CPQUtilities
             else if (errorCode.Equals("MSCRM_OppDoesntHavePriceList"))
                 retVal = "Opportunity does not have price list set. In order to successfully create products in MS CRM, opportunity should have price list selected";
             //SAP CRM Api
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
-            else if (errorCode.Equals("100050"))
-                retVal = "OpportunityId node is required";
+            else if (errorCode.Equals("SAPCRM_DomainIncorrect"))
+                retVal = "Incorrect domain name is not provided. Please contact your SAP CRM administrator";
+            else if (errorCode.Equals("SAPCRM_MissingDomain"))
+                retVal = "Domain name is not provided. Please contact your SAP CRM administrator";
+            else if (errorCode.Equals("SAPCRM_SAPCRMNotSelected"))
+                retVal = "CPQ has not been set up to be integrated with SAP CRM. Please contact your CPQ administrator";
             //Not Found
             else
                 retVal = "Unrecognized Error Code, please double check and try again";
