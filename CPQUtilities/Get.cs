@@ -46,7 +46,7 @@ namespace CPQUtilities
             return retVal;
         }
 
-        public static String SearchQuotes(Credentials credentials, String SearchCriteria)
+        public static String SearchQuotes(Credentials credentials, String SearchCriteria="")
         {
             string retVal = "";
 
