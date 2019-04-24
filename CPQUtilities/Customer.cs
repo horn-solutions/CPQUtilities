@@ -221,7 +221,6 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userCustomer, "CRMAccountId", CRMAccountId);
             Utility.AddIfNotEmptyOrNull(userCustomer, "CRMContactId", CRMContactId);
 
-
             return retVal;
         }
 

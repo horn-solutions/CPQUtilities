@@ -20,7 +20,6 @@ namespace CPQUtilities
     //  </Product>
     //</Products>
 
-
     //overall example pulled from API site:
     //<Products SkipCategoriesOnProductUpdate = "false" SkipPermissionsOnProductUpdate="false" >
     //  <Product>
@@ -126,7 +125,6 @@ namespace CPQUtilities
 
     public class Product
     {
-
         //not required:
         //public ProductDisplayType DisplayType { get; set; } //supports values: Simple, Configurable, System, Collection, Parent_child; default type is "Simple product"
         public string DisplayType { get; set; }
@@ -163,7 +161,6 @@ namespace CPQUtilities
         public string Description { get; set; } //Default Value (if node is missing) : Empty
         public string LongDescription { get; set; } //Default Value (if node is missing) : Empty
         public string CartDescription { get; set; } //Default Value (if node is missing) : Empty
-
         public AttributeList AttributeName { get; set; } //Default Value (if node is missing) : Empty
         public AttributeValueList AttributeValue { get; set; } //not defined within XML help files; use at your own risk!
         public string AttributeType { get; set; } //Default Value (if node is missing) : "UserSelection"; Supported values: “UserSelection”,”Date”,”String”,”Number”,”Att.Quantity”,”AttValue.Quantity”,”ExternalValue”,”UnitsOfMeasurement”,”Container”
@@ -185,7 +182,6 @@ namespace CPQUtilities
         public string AttributeButtonScript { get; set; } //CPQ does not support adding new script over API call. Product administration API can only add a script that already exists within CPQ
         public string ButtonScriptAttachedRank { get; set; } //rank
         public string AttributeValuesPreselected { get; set; } //optional
-
         public string Tabs { get; set; } //optional; not allowed with Simple Products;
         public string TabsSystemId { get; set; } //optional; not allowed with Simple Products;
         public string TabsName { get; set; } //optional; not allowed with Simple Products;
@@ -197,13 +193,11 @@ namespace CPQUtilities
         public string TabsAttributes { get; set; } //optional; not allowed with Simple Products;
         public string TabsAttributesName { get; set; } //optional; not allowed with Simple Products;
         public string TabsAttributesRank { get; set; } //optional; not allowed with Simple Products;
-
         public string GlobalScripts { get; set; } //optional; not supported for displaytype button
         public string GlobalScriptsName { get; set; } //child node for GlobalScripts
         public string GlobalScriptsRank { get; set; } //child node for GlobalScripts
         public string GlobalScriptsEvents { get; set; } //child node for GlobalScripts
         public ProductGlobalScriptsEventsEvent GlobalScriptsEventsEvent { get; set; } //child node for GlobalScripts; Supported values: OnProductLoaded, OnProductRuleExecutionStart, OnProductRuleExecutionEnd, OnProductTabChanged, OnProductCompleted, OnProductAddedToQuote, OnProductBeforeAddToQuote
-
 
         //required fields:
         public string ProductType { get; set; }
@@ -239,7 +233,6 @@ namespace CPQUtilities
             if (!IsValid())
                 throw new Exception("Product Is not valid, XML will not be created");
 
-
             //http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example
 
             XmlDocument retVal = new XmlDocument();
@@ -268,7 +261,6 @@ namespace CPQUtilities
 
             Utility.AddIfNotEmptyOrNull(userProduct, "Identificator", Identificator);
             Utility.AddIfNotEmptyOrNull(userProduct, "DisplayType", DisplayType);
-
            
             Utility.AddIfNotEmptyOrNull(userProduct, "ProductType", ProductType);
 
@@ -279,7 +271,6 @@ namespace CPQUtilities
                 Categories.AddToXML(userProduct);
 
             Utility.AddIfNotEmptyOrNull(userProduct, "PartNumber", PartNumber);
-           
 
             if (StartDate.HasValue)
             {
@@ -291,9 +282,7 @@ namespace CPQUtilities
                 Utility.AddIfNotEmptyOrNull(userProduct, "EndDate", EndDate);
             }
 
-           
             //Utility.AddIfNotEmptyOrNull(userProduct, "CATEGORIES", CategoryListString);
-
             Utility.AddIfNotEmptyOrNull(userProduct, "ShippingCosts", ShippingCosts);
             Utility.AddIfNotEmptyOrNull(userProduct, "Permissions", Permissions);
             Utility.AddIfNotEmptyOrNull(userProduct, "CPQProductId", CPQProductId);
@@ -322,7 +311,6 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProduct, "LongDescription", LongDescription);
             Utility.AddIfNotEmptyOrNull(userProduct, "CartDescription", CartDescription);
 
-
             //The Attribute Input Parameters conflict with Input XML Examples. Some Parameters show up in Examples that are not part of the Input Parameters list. 
             //see: http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:input_xml_example vs http://help.webcomcpq.com/doku.php?id=appendixd:simple_product_administration:product_admin_webmethod_inputxml
 
@@ -342,10 +330,6 @@ namespace CPQUtilities
 
                 if (AttributeValue != null)
                     AttributeValue.AddToXML(userProductAttributeValues);
-
-
-
-
 
                 //Attributes is a parent container, nested within Products, that may contain additional child products; need to rethink this one:
                 //XmlNode userAttributes = Utility.AddIfNotEmptyOrNull(userProducts, "Attributes", Attributes); 
@@ -397,8 +381,6 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(userProduct, "GlobalScriptsEventsEvent", GlobalScriptsEventsEvent);
 
             return retVal;
-
-
 
         }
 

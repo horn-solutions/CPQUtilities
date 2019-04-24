@@ -55,10 +55,6 @@ namespace CPQUtilities
 
             XmlNode companyProperties = retVal.CreateElement("COMPANYPROPERTIES");
             retVal.AppendChild(companyProperties);
-
-
-           
-
             Utility.AddIfNotEmptyOrNull(companyProperties, "COMPANYCODE", CompanyCode);
             Utility.AddIfNotEmptyOrNull(companyProperties, "NAME", Name);
             Utility.AddIfNotEmptyOrNull(companyProperties, "EMAILADDRESS", EmailAddress);
@@ -71,8 +67,6 @@ namespace CPQUtilities
             Utility.AddIfNotEmptyOrNull(companyProperties, "PHONENUMBER", PhoneNumber);
             Utility.AddIfNotEmptyOrNull(companyProperties, "FAXNUMBER", FaxNumber);
             Utility.AddIfNotEmptyOrNull(companyProperties, "IMAGE", Image);
-
-           
 
             return retVal;
         }

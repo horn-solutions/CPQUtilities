@@ -8,8 +8,6 @@ using System.Xml;
 namespace CPQUtilities
 {
 
-
-
     //<Crm>
     //  <OpportunityId>892ADE6756HIX</OpportunityId>
     //  <OpportunityName>Test Oppty</OpportunityName>

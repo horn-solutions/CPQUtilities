@@ -150,15 +150,10 @@ namespace CPQUtilities
             Console.WriteLine(response.InnerXml);
 
             return retVal;
-        
-
         }
 
         public static LinkOpportunity LinkOpportunity(LinkOpportunity linkOpportunity, Credentials credentials, string orderId)
         {
-
-
-
             //< Crm >
             //  < OpportunityId > 892ADE6756HIX </ OpportunityId >
             //     < OpportunityName > Test Oppty </ OpportunityName >

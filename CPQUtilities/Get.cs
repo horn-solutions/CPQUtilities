@@ -9,7 +9,6 @@ namespace CPQUtilities
 {
     public static class Get
     {
-
         //login issues persist for CPQQPI login attempts.
 
         public static String Catalogue(Credentials credentials)
@@ -21,11 +20,9 @@ namespace CPQUtilities
             //note, this can quickly exceed the limits of XML, and may not be the best method to get all items. A better way is likely to just export Products using the 
             //CPQ native interface.
             string retVal = "";
-
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
             retVal = cpq_service.GetCatalogue(credentials.Login, credentials.Password);
-
             return retVal;
         }
 
@@ -35,14 +32,10 @@ namespace CPQUtilities
 
             //returns general quote data (including main/line items), actions, key attributes, product types, 
             //promo codes, additional discounts, markets, shippings, customer data and customer fields
-
             string retVal = "";
-
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
             retVal = cpq_service.GetQuoteData(credentials.Login, credentials.Password, cartCompositeNumber, revNumber);
-
-
             return retVal;
         }
 
@@ -68,11 +61,8 @@ namespace CPQUtilities
 
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
-
             retVal = cpq_service.SearchQuotes(credentials.Login, credentials.Password, SearchCriteria);
-
             return retVal;
-
 
         }
 
@@ -86,33 +76,27 @@ namespace CPQUtilities
             //< CatalogueCode > A2223C </ CatalogueCode >
             //</ CatalogueCodes >
 
-
             //http://help.webcomcpq.com/doku.php?id=appendixd:validatecataloguecodeswebmethod:validatecataloguecodeswebmethod
 
             //Function description: ValidateCatalogueCodes function executes reverse search on supplied part numbers.
             //    Result of this function is validity status for each supplied catalogue code.
             //    If code is valid, result will also contain product name and item list price.
 
-
             //API parameters username / password identifies the API user
 
             //Maximum number of Catalogue codes per one call is limited to 5 in order to obtain optimal function and system resources 
             //usability.
-
-
 
             string retVal = "";
             CpqApi.CpqApi cpq_service = new CpqApi.CpqApi();
             cpq_service.Timeout = 200 * 1000;
             XmlDocument xDoc = catalogueCodes.CreateXml();
 
-
             XmlNode response = cpq_service.ValidateCatalogueCodes(credentials.Login, credentials.Password, xDoc);
             retVal = response.InnerXml;
             Console.WriteLine("Validate Catalogue Codes response: " + retVal);
 
             return retVal;
-
         }
 
         public static String GetCartActions (Credentials credentials, String OrderID)
@@ -164,7 +148,7 @@ namespace CPQUtilities
 
         public static String GetAPIErrorDescription (string API_Error_Code)
         {
-
+            //upon submission of an API Error code ID, will return description of that error code.
             //based on http://help.webcomcpq.com/doku.php?id=appendixd:apierrorcodes
 
             string retVal = "";
