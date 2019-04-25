@@ -29,7 +29,9 @@ namespace ConsoleTester
             ////Add a Company:
             //Console.WriteLine("Call Add Company Code:");
             //AddCompany();
-            Console.WriteLine(Get.GetAPIErrorDescription("100019"));
+            Console.WriteLine("The Desciption for API Error code: 100019 is: " + Get.GetAPIErrorDescription("100019"));
+
+            Console.WriteLine("Generated random password: " + Utility.RandomPassword());
 
             //Excel code:
 
